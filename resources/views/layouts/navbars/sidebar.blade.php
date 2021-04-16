@@ -106,6 +106,16 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('selection') }}">
+                        <i class="ni ni-planet text-blue"></i> {{ __('เลือก OKI') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('update') }}">
+                        <i class="ni ni-planet text-blue"></i> {{ __('ยื่นผลงาน') }}
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}
                     </a>

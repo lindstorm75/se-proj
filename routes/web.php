@@ -29,5 +29,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+
+	Route::get("selection", "SelectionController@index")->name("selection");
+	Route::get("update", "UpdateController@index")->name("update");
+	Route::post("update", "UpdateController@store");
 });
 
