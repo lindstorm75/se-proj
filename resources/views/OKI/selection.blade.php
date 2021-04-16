@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="header bg-primary pb-6">
+    <div class="header bg-danger pb-2 pt-6">
           <div class="container-fluid">
             <div class="header-body">
               <div class="row align-items-center py-4">
@@ -9,7 +9,7 @@
                   <h6 class="h2 text-white d-inline-block mb-0">ยินดีต้อนรับเข้าสู่ระบบการเลือก OKR</h6>
                   <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                     <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                      <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a></li>
+                      <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home text-danger"></i></a></li>
                       <li class="breadcrumb-item">เลือก OKR</li>
                     </ol>
                   </nav>
@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="card px-4 px-md-6 py-5">
-          <h2><i class="ni ni-bold-right text-blue"></i><i class="ni ni-bold-right text-blue"></i> ส่วนที่ 1 ข้อมูลรายบุคคล</h2>
+          <h2 class="mb-4"><i class="ni ni-bold-right text-danger"></i><i class="ni ni-bold-right text-danger"></i> ส่วนที่ 1 ข้อมูลรายบุคคล</h2>
           <form>
 
             <div class="row">
@@ -71,7 +71,7 @@
             
             <br>
 
-            <h2><i class="ni ni-bold-right text-blue"></i><i class="ni ni-bold-right text-blue"></i> ส่วนที่ 2 เลือกหัวข้อ OKR</h2>
+            <h2 class="mb-4"><i class="ni ni-bold-right text-danger"></i><i class="ni ni-bold-right text-danger"></i> ส่วนที่ 2 เลือกหัวข้อ OKR</h2>
             <div class="table-responsive">
               <div>
                 <table class="table align-items-center">

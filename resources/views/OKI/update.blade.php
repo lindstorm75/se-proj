@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="header bg-primary pb-6">
+    <div class="header bg-danger pb-2 pt-6">
           <div class="container-fluid">
             <div class="header-body">
               <div class="row align-items-center py-4">
@@ -9,7 +9,7 @@
                   <h6 class="h2 text-white d-inline-block mb-0">ยินดีต้อนรับเข้าสู่ระบบการยื่นผลงาน OKR</h6>
                   <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                     <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                      <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a></li>
+                      <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home text-danger"></i></a></li>
                       <li class="breadcrumb-item">ยื่นผลงาน</li>
                     </ol>
                   </nav>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="card px-4 px-md-6 py-5">
-            <h2><i class="ni ni-bold-right text-blue"></i><i class="ni ni-bold-right text-blue"></i> เลือกหัวข้อ OKR ที่ต้องการยื่น</h2>
+            <h2 class="mb-4"><i class="ni ni-bold-right text-danger"></i><i class="ni ni-bold-right text-danger"></i> เลือกหัวข้อ OKR ที่ต้องการยื่น</h2>
             <div class="table-responsive">
                 <div>
                 <table class="table align-items-center">
@@ -38,7 +38,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @for ($i = 0; $i < 12; $i++)
+                      @for ($i = 0; $i < 12; $i++)
                         <tr>
                           <td scope="col" class="sort">
                             <span>{{ $i + 1 }}</span>
@@ -51,8 +51,14 @@
                             </div>
                           </td>
                           <td scope="col" class="sort">
-                            <span class="badge badge-pill badge-lg badge-{{ ($i + 1) * 10 == 100 ? 'success' : 'warning' }}" style="font-size: .8rem">
-                              {{ ($i + 1) * 10 == 100 ? "เสร็จสิ้น" : "กำลังดำเนินการ" }}
+                            <span class="badge badge-pill badge-lg @if (($i + 1) * 10 == 10) badge-danger @elseif (($i + 1) * 10 == 100) badge-success @else badge-warning @endif" style="font-size: .8rem">
+                            @if (($i + 1) * 10 == 10)
+                              รออนุมัติ
+                            @elseif (($i + 1) * 10 == 100)
+                              เสร็จสิ้น
+                            @else
+                              กำลังดำเนินการ
+                            @endif
                             </span>
                           </td>
                           <td>
@@ -113,7 +119,7 @@
                             </form>
                           </td>
                         </tr>
-                    @endfor
+                      @endfor
                     </tbody>
                 </table>
                 </div>

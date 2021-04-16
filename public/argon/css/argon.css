@@ -21867,3 +21867,11 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
 
     height: 3px;
 }
+.table-responsive tr th
+{
+    font-size: .8rem;
+}
+.table-responsive td
+{
+    font-size: 1rem;
+}

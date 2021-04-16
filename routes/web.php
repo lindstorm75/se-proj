@@ -33,5 +33,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get("selection", "SelectionController@index")->name("selection");
 	Route::get("update", "UpdateController@index")->name("update");
 	Route::post("update", "UpdateController@store");
+	Route::get("head", "HeadController@index")->name("head");
 });
 
+Route::get('/clear-cache', function() {
+	$exitCode = Artisan::call('config:clear');
+	$exitCode = Artisan::call('cache:clear');
+	$exitCode = Artisan::call('config:cache');
+	return 'DONE'; //Return anything
+});
