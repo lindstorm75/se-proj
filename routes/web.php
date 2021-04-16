@@ -42,3 +42,25 @@ Route::get('/clear-cache', function() {
 	$exitCode = Artisan::call('config:cache');
 	return 'DONE'; //Return anything
 });
+
+use Laravel\Socialite\Facades\Socialite;
+
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+use App\User;
+use App\SocialAccount;
+
+Route::get('/auth/callback', function () {
+    $user = Socialite::driver('google')->user();
+
+		if (auth()->attempt(["email" => $user->getEmail(), "password" => "lmaofuckyou"]))
+		{
+			return view("dashboard");
+		}
+});
+
+Route::get("register", function() {
+	return redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+})->name("register");

@@ -14,11 +14,11 @@
                                 <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/github.svg"></span>
                                 <span class="btn-inner--text">{{ __('Github') }}</span>
                             </a> -->
-                            <!-- <a href="#" class="btn btn-neutral btn-icon">
+                            <a href="https://se-proj.en.kku.ac.th/g6/auth/redirect" class="btn btn-neutral btn-icon">
                                 <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/google.svg"></span>
                                 <span class="btn-inner--text">{{ __('Google') }}</span>
-                            </a> -->
-                            <?php
+                            </a>
+                            <!-- <?php
                                 // require_once 'C:\Users\<Windows User Name>\vendor\autoload.php';
                                 // require_once 'C:\Users\LENOVO\vendor\autoload.php';
                                 require_once __DIR__.'../../../../vendor/autoload.php';
@@ -52,9 +52,9 @@
                                 } else {
                                      echo "<a href='".$client->createAuthUrl()."' class='btn btn-neutral btn-icon'>"; // in case haven't login
                                 }
-                            ?>
-                            <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/google.svg"></span>
-                            <span class="btn-inner--text">{{ __('Google') }}</span>
+                            ?> -->
+                            <!-- <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/google.svg"></span>
+                            <span class="btn-inner--text">{{ __('Google') }}</span> -->
                             </a>
                         </div>
                     </div>
@@ -65,8 +65,8 @@
                             </small>
                             <br>
                             <small>
-                                {{ __('Username') }} <strong>admin@argon.com</strong>
-                                {{ __('Password') }} <strong>secret</strong>
+                                {{ __('Username') }} <strong>admin@admin.com</strong>
+                                {{ __('Password') }} <strong>12345678</strong>
                             </small>
                         </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
