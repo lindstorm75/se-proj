@@ -14,9 +14,47 @@
                                 <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/github.svg"></span>
                                 <span class="btn-inner--text">{{ __('Github') }}</span>
                             </a> -->
-                            <a href="#" class="btn btn-neutral btn-icon">
+                            <!-- <a href="#" class="btn btn-neutral btn-icon">
                                 <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/google.svg"></span>
                                 <span class="btn-inner--text">{{ __('Google') }}</span>
+                            </a> -->
+                            <?php
+                                // require_once 'C:\Users\<Windows User Name>\vendor\autoload.php';
+                                // require_once 'C:\Users\LENOVO\vendor\autoload.php';
+                                require_once __DIR__.'../../../../vendor/autoload.php';
+                                // init configuration
+                                $clientID = '928213526227-25h5rf0fgv4l10b3trmt2oc15f9tndln.apps.googleusercontent.com';
+                                $clientSecret = '_bnbecaOCCXDlbfLax8LXGbB';
+                                $redirectUri = 'http://127.0.0.1:8000/login'; // อันนี้ให้มันเด้งไปไหนบอกด้วย เพราะเราต้องไปเพิ่มใน whitelist 
+                                
+                                // create Client Request to access Google API
+                                $client = new Google_Client();
+                                $client->setClientId($clientID);
+                                $client->setClientSecret($clientSecret);
+                                $client->setRedirectUri($redirectUri);
+                                $client->addScope("email");
+                                $client->addScope("profile");
+
+                                // authenticate code from Google OAuth Flow
+                                if (isset($_GET['code'])) {
+
+                                    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+                                    $client->setAccessToken($token['access_token']);
+                                    
+                                    // get profile info
+                                    $google_oauth = new Google_Service_Oauth2($client);
+                                    $google_account_info = $google_oauth->userinfo->get(); //ข้อมูลจะอยู่นี่ๆ
+                                    $email =  $google_account_info->email;
+                                    $name =  $google_account_info->name;
+                                        print_r($google_account_info); //เราconsole log ไม่เป็นเลยปริ้นให้ดู 55555555
+                                    
+                                    // ละก็ใช้ข้อมูลที่ได้แหละๆ
+                                } else {
+                                     echo "<a href='".$client->createAuthUrl()."' class='btn btn-neutral btn-icon'>"; // in case haven't login
+                                }
+                            ?>
+                            <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/google.svg"></span>
+                            <span class="btn-inner--text">{{ __('Google') }}</span>
                             </a>
                         </div>
                     </div>
@@ -90,3 +128,4 @@
         </div>
     </div>
 @endsection
+
