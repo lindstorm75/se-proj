@@ -34,6 +34,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get("update", "UpdateController@index")->name("update");
 	Route::post("update", "UpdateController@store");
 	Route::get("head", "HeadController@index")->name("head");
+
+	// Admin
+	Route::get("settings", "SettingsController@index")->name("settings");
+	Route::post("settings/add", "SettingsController@store")->name("settings.add");
+
+	//
+	Route::get("waiting", "WaitingOKRController@index")->name("waiting");
 });
 
 Route::get('/clear-cache', function() {

@@ -85,6 +85,11 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('waiting') }}">
+                        <i class="ni ni-bullet-list-67 text-warning"></i> {{ __('ตัวชี้วัดที่รอการอนุมัติ') }}
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('selection') }}">
                         <i class="ni ni-check-bold text-success"></i> {{ __('เลือก OKI') }}
                     </a>
@@ -97,6 +102,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('head') }}">
                         <i class="ni ni-single-02 text-warning"></i> {{ __('หัวหน้างาน') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('settings') }}">
+                        <i class="ni ni-settings text-danger"></i> {{ __('จัดการตัวชี้วัด') }}
                     </a>
                 </li>
             </ul>
