@@ -39,10 +39,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get("settings", "SettingsController@index")->name("settings");
 	Route::post("settings/add", "SettingsController@store")->name("settings.add");
 	Route::post("settings/update", "SettingsController@update")->name("settings.update");
+	Route::get("assign", "AssignController@index")->name("assign");
+	Route::post("assign", "AssignController@store");
 
 	//
 	Route::get("waiting", "WaitingOKRController@index")->name("waiting");
-
 	Route::get("pdf", "PDFMakerController@index")->name("pdf");
 });
 
