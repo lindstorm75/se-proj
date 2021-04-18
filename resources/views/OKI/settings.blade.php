@@ -25,7 +25,7 @@
         <i class="ni ni-bold-right text-danger"></i> <span>สายวิชาการ</span>
       </h2>
       <div>
-        @include("OKI.modal", ["add" => true, "id" => "addModal"])
+        @include("OKI.forms.add")
       </div>
     </div>
     @include("OKI.table", ["data" => $technical])
@@ -34,9 +34,6 @@
         <i class="ni ni-bold-right text-danger"></i>
         <i class="ni ni-bold-right text-danger"></i> <span>สายสนับสนุน</span>
       </h2>
-      <div>
-        @include("OKI.modal", ["add" => true, "id" => "addModal"])
-      </div>
     </div>
     @include("OKI.table", ["data" => $support])
   </div>

@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
 	// Admin
 	Route::get("settings", "SettingsController@index")->name("settings");
 	Route::post("settings/add", "SettingsController@store")->name("settings.add");
+	Route::post("settings/update", "SettingsController@update")->name("settings.update");
 
 	//
 	Route::get("waiting", "WaitingOKRController@index")->name("waiting");

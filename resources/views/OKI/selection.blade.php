@@ -77,29 +77,31 @@
                 <table class="table align-items-center">
                   <thead class="thead-light">
                     <tr>
+                      <th scope="col"></th>
                       <th scope="col">ลำดับ</th>
                       <th scope="col">หัวข้อ</th>
                       <th scope="col">หน่วยนับค่าเป้าหมาย</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @for ($i = 0; $i < 12; $i++)
+                    @foreach($data as $index => $val)
                       <tr>
                         <td scope="col" class="sort">
-                          <div class="custom-control custom-radio mb-3">
-                            <input type="radio" id="choice-{{ $i + 1 }}" name="choice" class="custom-control-input">
-                            <label class="custom-control-label" for="choice-{{ $i + 1 }}">{{ $i + 1 }}</label>
+                          <div class="custom-control custom-radio" style="margin-bottom: 2.2rem">
+                            <input type="radio" id="choice-{{ $index + 1 }}" name="choice" class="custom-control-input">
+                            <label class="custom-control-label" for="choice-{{ $index + 1 }}"></label>
                           </div>
                         </td>
-                        <td scope="col" class="sort">หัวข้อที่ {{ $i + 1 }}</td>
+                        <td scope="col" class="sort">{{ $index + 1 }}</td>
+                        <td scope="col" class="sort">{{ $val["subject"] }}</td>
                         <td scope="col" class="sort">
                           <div class="form-group d-flex align-items-center">
                             <input class="form-control" style="width: 5rem" type="number" value="" id="example-number-input">
-                            <span class="ml-2">คน</span>
+                            <span class="ml-2">{{ $val["unit"] }}</span>
                           </div>
                         </td>
                       </tr>
-                    @endfor
+                    @endforeach
                   </tbody>
                 </table>
               </div>

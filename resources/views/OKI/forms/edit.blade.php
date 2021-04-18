@@ -1,19 +1,27 @@
-<button type="button" class="btn btn-outline-{{ $add ? 'success' : 'warning' }}" data-toggle="modal" data-target="#modal-{{ $id }}">
-  {{ $add ? "เพิ่มตัวชี้วัด" : "แก้ไข" }}
+<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#modal-edit-{{ $id }}">
+  แก้ไข
 </button>
 
-<div class="modal fade" id="modal-{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-edit-{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">{{ $add ? "เพิ่มตัวชี้วัด" : "แก้ไขตัวชี้วัด" }}</h5>
+        <h5 class="modal-title">แก้ไขตัวชี้วัด</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('settings.add') }}" method="POST">
+      <form action="{{ route('settings.update') }}" method="POST">
         @csrf
+        <input name="id" type="hidden" value="{{ $id }}">
         <div class="modal-body">
+          <div class="form-group">
+            <label for="subject">โปรดเลือกสาย</label>
+            <select name="category" class="form-control" data-toggle="select" data-placeholder="โปรดเลือกสาย">
+              <option value="technical" {{ $category == "technical" ? "selected" : "" }}>สายวิชาการ</option>
+              <option value="support" {{ $category == "support" ? "selected" : "" }}>สายสนับสนุน</option>
+            </select>
+          </div>
           <div class="form-group">
             <label for="subject">หัวข้อเรื่อง</label>
             <textarea name="subject" style="resize: none" class="form-control" rows="5" placeholder="โปรดเพิ่มหัวข้อ">{{ $subject ?? "" }}</textarea>
