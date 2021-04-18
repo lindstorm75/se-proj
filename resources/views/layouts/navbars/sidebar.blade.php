@@ -109,6 +109,11 @@
                         <i class="ni ni-settings text-danger"></i> {{ __('จัดการตัวชี้วัด') }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pdf') }}">
+                        <i class="ni ni-settings text-danger"></i> {{ __('PDF Maker') }}
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

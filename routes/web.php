@@ -41,6 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//
 	Route::get("waiting", "WaitingOKRController@index")->name("waiting");
+
+	Route::get("pdf", "PDFMakerController@index")->name("pdf");
 });
 
 Route::get('/clear-cache', function() {
