@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
+	Route::get("print", "PDFController@get")->name("getPdf");
 	Route::get("selection", "SelectionController@index")->name("selection");
 	Route::get("update", "UpdateController@index")->name("update");
 	Route::post("update", "UpdateController@store");
@@ -44,7 +45,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//
 	Route::get("waiting", "WaitingOKRController@index")->name("waiting");
-	Route::get("pdf", "PDFMakerController@index")->name("pdf");
 });
 
 Route::get('/clear-cache', function() {
@@ -64,12 +64,12 @@ use App\User;
 use App\SocialAccount;
 
 Route::get('/auth/callback', function () {
-    $user = Socialite::driver('google')->user();
+	$user = Socialite::driver('google')->user();
 
-		if (auth()->attempt(["email" => $user->getEmail(), "password" => "lmaofuckyou"]))
-		{
-			return view("dashboard");
-		}
+	if (auth()->attempt(["email" => $user->getEmail(), "password" => "lmaofuckyou"]))
+	{
+		return view("dashboard");
+	}
 });
 
 Route::get("register", function() {
@@ -78,7 +78,13 @@ Route::get("register", function() {
 
 use Illuminate\Support\Facades\Hash;
 
-Route::get('/print',function(){
-	$pdf = PDF::loadView('OKI/pdf');
-	return @$pdf->stream('OKI/pdf');
+Route::get("create", function() {
+	User::create([
+		"full_name" => "Thanapong Angkha",
+		"username" => "lindstorm75",
+		"email" => "thanapong.a@kkumail.com",
+		"image" => "",
+		"password" => Hash::make("1234")
+	]);
+	return redirect()->route("login");
 });

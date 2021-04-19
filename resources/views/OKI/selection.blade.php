@@ -106,13 +106,24 @@
                 </table>
               </div>
             </div>
-            <button type="submit" class="btn btn-success float-right">ยืนยัน</button>
+            
+            <br>
+            <br>
+
+            <h2 class="mb-4"><i class="ni ni-bold-right text-danger"></i><i class="ni ni-bold-right text-danger"></i> ส่วนที่ 3 เซ็นและอัปโหลดเอกสารบันทึกความเข้าใจ</h2>
+            <p class="text-muted">ดาวน์โหลดเอกสารสารบันทึกความเข้าใจเพื่อเซ็นรับทราบ <a href="{{ route('getPdf') }}">ที่นี่</a></p>
+            <label for="file">อัปโหลดสารสารบันทึกความเข้าใจ</label>
+            <div class="row">
+              <div class="col-md-10 col-lg-6 col-xl-4">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="file" lang="en">
+                  <label class="custom-file-label" for="file">เลือกไฟล์</label>
+                </div>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn btn-success float-right mt-4">ยืนยัน</button>
           </form>
         </div>
         @include('layouts.footers.auth')
 @endsection
-
-@push('js')
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-@endpush

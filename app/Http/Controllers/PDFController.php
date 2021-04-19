@@ -8,9 +8,9 @@ use PDF;
 
 class PDFController extends Controller
 {
-    public function pdf()
+    public function get()
     {
-        $pdf = PDF::loadView('pdf');
-        return @$pdf->stream();
+        $pdf = PDF::loadView('OKI/pdf');
+        return @$pdf->stream('OKI/pdf');
     }
 }
