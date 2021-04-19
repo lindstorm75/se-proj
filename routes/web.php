@@ -73,3 +73,9 @@ Route::get('/auth/callback', function () {
 Route::get("register", function() {
 	return redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 })->name("register");
+
+//pdf
+	Route::get('/print',function(){
+		$pdf = PDF::loadView('OKI/pdf');
+		return @$pdf->stream('OKI/pdf');
+	});
