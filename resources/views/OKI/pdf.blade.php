@@ -33,9 +33,11 @@
         body {
             font-family: "THSarabunNew";
         }
-        p,li {
+        p, li, th {
             font-size: 1.25rem;
-            margin-left: 5%;
+            margin: 0 5%;
+            line-height: 1.1rem;
+            margin-bottom: .5rem;
         }
         h2 {
             text-align: center;
@@ -45,7 +47,7 @@
             text-align: center;
         }
         .tabLeft {
-            margin-left: 10%;
+            margin: 0 5%;
         }
         .stickRight {
             text-align: right;
@@ -55,6 +57,9 @@
           margin-left: auto;
           margin-right: auto;
           width: 20%;
+        }
+        .bold {
+          font-weight: bold
         }
     </style>
 </head>
@@ -68,14 +73,13 @@
     <ol>
         <li>
             บันทึกระหว่าง
-            <p class="tabLeft">
-                รองศาสตาจารย์รัชพล สันติวรากร คณบดีคณะวิศวกรรมศาสตร์
-                <span style="float: right">ผู้มอบหมาย</span><br>
-            
-            <span class="centerText">และ</span><br>
-                รองศาสตาจารย์รัชพล สันติวรากร สาขาวิศวกรรมเครื่องกล
-                <span style="float: right">ผู้รับปฎิบัติ</span>
-            </p>
+            <div class="tabLeft">
+              <span>รองศาสตาจารย์รัชพล สันติวรากร</span> <span>คณบดีคณะวิศวกรรมศาสตร์</span>
+              <span style="float: right; width: 5rem">ผู้มอบหมาย</span>
+              <div style="margin-right: 0%; text-align: center;">และ</div>
+              <span class="bold">รองศาสตาจารย์รัชพล สันติวรากร</span> <span>สาขาวิศวกรรมเครื่องกล</span>
+              <span style="float: right; width: 5rem">ผู้รับปฎิบัติ</span>
+            </div>
         </li>
         <li>
             บันทึกนี้ใช้สำหรับระยะเวลา 1 ปี เริ่มตั้งแต่วันที่ 1 มกราคม พ.ศ.2564
@@ -85,8 +89,7 @@
             รายละเอียดของบันทึก คือ ตัวชี้วัด OKR รายบุคคล
             <h4 class="tabLeft">
                 ตัวชี้วัดข้อ
-                7.จำนวนผลงานที่ได้รับทุนสนับสนุนจากภายนอกที่ถูกนำไปใช้ประโยชน์
-                (CSV)
+                7.จำนวนผลงานที่ได้รับทุนสนับสนุนจากภายนอกที่ถูกนำไปใช้ประโยชน์ (CSV)
             <br>ค่าเป้าหมาย 1 ผลงาน</h4>
         </li>
         <li>
@@ -110,19 +113,19 @@
             จึงได้ลงลายมือชื่อไว้เป็นสำคัญ
         </li>
     </ol><br><br>
-    <table style="width:100%">
+    <table style="width: 100%">
       <tr>
-        <th>
+        <th style="font-weight: normal;">
           ..................................................................... <br>
           รองศาสตาจารย์รัชพล สันติวรากร <br>
           คณบดีคณะวิศวกรรมศาสตร์ <br>
-          วันที่ 28 ธันวาคม พ.ศ.2563
+          วันที่ 28 ธันวาคม พ.ศ. 2563
         </th>
-        <th>
+        <th style="font-weight: normal;">
           ..................................................................... <br>
           รองศาสตาจารย์รัชพล สันติวรากร <br>
           สาขาวิศวกรรมเครื่องกล <br>
-          วันที่ 28 ธันวาคม พ.ศ.2563
+          วันที่ 28 ธันวาคม พ.ศ. 2563
         </th>
         
       </tr>
