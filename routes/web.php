@@ -78,13 +78,7 @@ Route::get("register", function() {
 
 use Illuminate\Support\Facades\Hash;
 
-Route::get("create", function() {
-	// $user = User::create([
-	// 	"full_name" => "Thanapong Angkha",
-	// 	"username" => "lindstorm75",
-	// 	"email" => "thanapong.a@kkumail.com",
-	// 	"image" => "",
-	// 	"password" => Hash::make("1234")
-	// ]);
-	// dd($user);
+Route::get('/print',function(){
+	$pdf = PDF::loadView('OKI/pdf');
+	return @$pdf->stream('OKI/pdf');
 });
