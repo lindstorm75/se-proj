@@ -14,7 +14,14 @@ class CreateHeadsTable extends Migration
     public function up()
     {
         Schema::create('heads', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string("full_name");
+            $table->string("position");
+            $table->integer("department_id");
+            $table->foreign("department_id")->references("id")->on("departments")->onDelete('cascade');
+            $table->integer("creator_id");
+            $table->foreign("creator_id")->references("id")->on("admins");
+            $table->string("image")->nullable();
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOkrsTable extends Migration
+class CreateDepartmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateOkrsTable extends Migration
      */
     public function up()
     {
-        Schema::create('okrs', function (Blueprint $table) {
-            $table->id();
+        Schema::create('departments', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string("name");
             $table->timestamps();
-            $table->string("category");
-            $table->string("subject");
-            $table->string("detail");
-            $table->string("unit");
         });
     }
 
@@ -30,6 +27,6 @@ class CreateOkrsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('okrs');
+        Schema::dropIfExists('departments');
     }
 }

@@ -75,3 +75,16 @@ Route::get('/auth/callback', function () {
 Route::get("register", function() {
 	return redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 })->name("register");
+
+use Illuminate\Support\Facades\Hash;
+
+Route::get("create", function() {
+	// $user = User::create([
+	// 	"full_name" => "Thanapong Angkha",
+	// 	"username" => "lindstorm75",
+	// 	"email" => "thanapong.a@kkumail.com",
+	// 	"image" => "",
+	// 	"password" => Hash::make("1234")
+	// ]);
+	// dd($user);
+});
