@@ -85,11 +85,6 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('waiting') }}">
-                        <i class="ni ni-bullet-list-67 text-warning"></i> {{ __('ตัวชี้วัดที่รอการอนุมัติ') }}
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route('selection') }}">
                         <i class="ni ni-check-bold text-success"></i> {{ __('เลือก OKI') }}
                     </a>
@@ -97,6 +92,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('update') }}">
                         <i class="ni ni-send text-info"></i> {{ __('ยื่นผลงาน') }}
+                    </a>
+                </li>
+
+                @if(auth()->user()->role_id == 4)
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('waiting') }}">
+                        <i class="ni ni-bullet-list-67 text-warning"></i> {{ __('ตัวชี้วัดที่รอการอนุมัติ') }}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -114,6 +116,7 @@
                         <i class="ni ni-settings-gear-65 text-warning"></i> {{ __('กำหนดหัวหน้างาน') }}
                     </a>
                 </li>
+                @endif
             </ul>
         </div>
     </div>

@@ -94,3 +94,8 @@ Route::get("create", function() {
 	// dd($user);
 	return redirect()->route("login");
 });
+
+Route::get("test", function() {
+	$userRole = Role::where("id", auth()->user()->role_id)->first();
+	dd($userRole);
+});
