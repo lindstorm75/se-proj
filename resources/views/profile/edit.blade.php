@@ -99,6 +99,18 @@
                                         </span>
                                     @endif
                                 </div>
+
+                                <div class="form-group{{ $errors->has('username') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-username">{{ __('Username') }}</label>
+                                    <input type="text" name="username" id="input-username" class="form-control form-control-alternative{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="{{ __('Username') }}" value="{{ old('usernanme', auth()->user()->username) }}" required autofocus>
+
+                                    @if ($errors->has('username'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('username') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
                                     <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}" required>
@@ -109,6 +121,50 @@
                                         </span>
                                     @endif
                                 </div>
+
+                                <div class="form-group{{ $errors->has('department_id') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-department_id">{{ __('Department') }}</label>
+                                    <select type="text" name="department_id" id="input-department_id" class="form-control form-control-alternative{{ $errors->has('department_id') ? ' is-invalid' : '' }}" placeholder="{{ __('department_id') }}" value="{{ old('department_id', auth()->user()->department_id) }}"  required>
+                                        <option value=1> สาขาวิชาวิศวกรรมโยธา </option>
+                                        <option value=2> สาขาวิชาวิศวกรรมไฟฟ้า </option>
+                                        <option value="3"> สาขาวิชาวิศวกรรมเกษตร </option>
+                                        <option value="4"> สาขาวิชาวิศวกรรมอุตสาหการ </option>
+                                        <option value="5"> สาขาวิชาวิศวกรรมเครื่องกล </option>
+                                        <option value="6"> สาขาวิชาวิศวกรรมสิ่งแวดล้อม </option>
+                                        <option value="7"> สาขาวิชาวิศวกรรมเคมี </option>
+                                        <option value="8"> สาขาวิชาวิศวกรรมคอมพิวเตอร์ </option>
+                                    </select>
+                                    
+                                    @if ($errors->has('department_id'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('department_id') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group{{ $errors->has('position') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-position">{{ __('Position') }}</label>
+                                    <input type="text" name="position" id="input-position" class="form-control form-control-alternative{{ $errors->has('position') ? ' is-invalid' : '' }}" placeholder="{{ __('position') }}" value="{{ old('position', auth()->user()->position) }}">
+
+                                    @if ($errors->has('position'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('image') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-image">{{ __('Image') }}</label>
+                                    <input type="file" name="image" id="input-image" class="form-control form-control-alternative{{ $errors->has('image') ? ' is-invalid' : '' }}" placeholder="{{ __('image') }}" value="{{ old('image', auth()->user()->image) }}">
+
+                                    @if ($errors->has('image'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('image') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
