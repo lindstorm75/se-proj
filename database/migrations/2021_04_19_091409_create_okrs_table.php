@@ -15,11 +15,12 @@ class CreateOkrsTable extends Migration
     {
         Schema::create('okrs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string("category");
             $table->string("subject");
             $table->string("detail");
             $table->string("unit");
             $table->integer("creator_id");
-            $table->foreign("creator_id")->references("id")->on("admins");
+            $table->foreign("creator_id")->references("id")->on("users");
             $table->timestamps();
         });
     }

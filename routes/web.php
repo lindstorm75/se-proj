@@ -77,14 +77,20 @@ Route::get("register", function() {
 })->name("register");
 
 use Illuminate\Support\Facades\Hash;
+use App\Department;
+use App\Role;
 
 Route::get("create", function() {
-	User::create([
-		"full_name" => "Thanapong Angkha",
-		"username" => "lindstorm75",
-		"email" => "thanapong.a@kkumail.com",
-		"image" => "",
-		"password" => Hash::make("1234")
-	]);
+	// $user = Role::where("name", "user")->first();
+	// $computer = Department::where("name", "วิศวกรรมคอมพิวเตอร์")->first();
+	// $user = User::create([
+	// 	"full_name" => "Thanapong Angkha",
+	// 	"username" => "lindstorm75",
+	// 	"email" => "thanapong.a@kkumail.com",
+	// 	"password" => Hash::make("1234"),
+	// 	"department_id" => $computer->id,
+	// 	"role_id" => $user->id
+	// ]);
+	// dd($user);
 	return redirect()->route("login");
 });
