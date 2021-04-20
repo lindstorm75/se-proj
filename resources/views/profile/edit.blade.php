@@ -152,19 +152,7 @@
                                         </span>
                                     @endif
                                 </div>
-
-                                <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-image">{{ __('Image') }}</label>
-                                    <input type="file" name="image" id="input-image" class="form-control form-control-alternative{{ $errors->has('image') ? ' is-invalid' : '' }}" placeholder="{{ __('image') }}" value="{{ old('image', auth()->user()->image) }}">
-
-                                    @if ($errors->has('image'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('image') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-
-                                
+                 
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
