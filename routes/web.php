@@ -89,7 +89,7 @@ Route::get("create", function() {
 		"th_name" => "วิศวกรรมคอมพิวเตอร์"
 	]);
 	$user = Role::where("name", "user")->first();
-	$computer = Department::where("name", "วิศวกรรมคอมพิวเตอร์")->first();
+	$computer = Department::where("th_name", "วิศวกรรมคอมพิวเตอร์")->first();
 	$user = User::create([
 		"full_name" => "God",
 		"username" => "godza55",
@@ -173,12 +173,15 @@ Route::get("create", function() {
 		]);
 	}
 
-	// dd(Department::where("id", 17)->first());
+	
 
 	return redirect()->route("login");
 });
 
 Route::get("test", function() {
-	$userRole = Role::where("id", auth()->user()->role_id)->first();
-	dd($userRole);
+	$fp = fopen($fileLocation, 'r');
+	$content = fread($fp, filesize($fileLocation));
+	$content = addslashes($content);
+	fclose($fp);
 });
+

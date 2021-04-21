@@ -28,15 +28,14 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
+
         $request->validate([
             "name" => "required|string",
-            "username" => "required|string",
             "email" => "required|string",
             "department_id" => "required|string",
-            "position" => "required|string",
-            "image" => "required|string"
+            "position" => "required|string"
         ]);
-        
+
         auth()->user()->update($request->all());
 
         return back()->withStatus(__('Profile successfully updated.'));
