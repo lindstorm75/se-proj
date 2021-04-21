@@ -36,7 +36,7 @@
             <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                     <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                    <img alt="Image placeholder" src="{{ auth()->user()->image ?? 'https://th.jobsdb.com/th-th/cms/employer/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png' }}">
                     </span>
                 </div>
             </a>
@@ -201,7 +201,7 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                     <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg">
+                        <img alt="Image placeholder" src="{{ auth()->user()->image ?? 'https://th.jobsdb.com/th-th/cms/employer/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png' }}">
                     </span>
                     <div class="media-body ml-2 d-none d-lg-block">
                         <span class="mb-0 text-sm  font-weight-bold">Admin Admin</span>

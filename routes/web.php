@@ -80,6 +80,18 @@ Route::get("create", function() {
 	// 	"name" => "user",
 	// 	"power_level" => 1
 	// ]);
+	// $head = Role::create([
+	// 	"name" => "head",
+	// 	"power_level" => 1
+	// ]);
+	// $dean = Role::create([
+	// 	"name" => "dean",
+	// 	"power_level" => 2
+	// ]);
+	// $admin = Role::create([
+	// 	"name" => "admin",
+	// 	"power_level" => 3
+	// ]);
 	// dd($sub, $user);
 	// $dep1 = Department::create([
 	// 	"en_name" => "Faculty of Engineering",
@@ -90,17 +102,17 @@ Route::get("create", function() {
 	// 	"th_name" => "วิศวกรรมคอมพิวเตอร์"
 	// ]);
 	// dd($dep1, $dep2);
-	// $user = Role::where("name", "user")->first();
-	// $computer = Department::where("name", "วิศวกรรมคอมพิวเตอร์")->first();
-	// $user = User::create([
-	// 	"full_name" => "Thanapong Angkha",
-	// 	"username" => "lindstorm75",
-	// 	"email" => "thanapong.a@kkumail.com",
-	// 	"password" => Hash::make("1234"),
-	// 	"department_id" => $computer->id,
-	// 	"role_id" => $user->id
-	// ]);
-	// dd($user);
+	$admin = Role::where("name", "admin")->first();
+	$computer = Department::where("th_name", "วิศวกรรมคอมพิวเตอร์")->first();
+	$user = User::create([
+		"full_name" => "God",
+		"username" => "godza555",
+		"email" => "god@gmail.com",
+		"password" => Hash::make("12345678"),
+		"department_id" => $computer->id,
+		"role_id" => $admin->id
+	]);
+	dd($user);
 	$departments = array(
 		array(
 			"th_name" => "คณะวิศวกรรมศาสตร์",
@@ -182,6 +194,5 @@ Route::get("create", function() {
 });
 
 Route::get("test", function() {
-	$userRole = Role::where("id", auth()->user()->role_id)->first();
-	dd($userRole);
+	dd(auth()->user()->role_id);
 });

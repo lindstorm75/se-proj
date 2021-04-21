@@ -14,7 +14,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                            <img alt="Image placeholder" src="{{ auth()->user()->image }}">
+                            <img alt="Image placeholder" src="{{ auth()->user()->image ?? 'https://th.jobsdb.com/th-th/cms/employer/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png' }}">
                         </span>
                     </div>
                 </a>
@@ -80,10 +80,16 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> {{ __('หน้าหลัก') }}
+                        <i class="ni ni-chart-bar-32 text-primary"></i> {{ __('หน้าหลัก') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('home') }}">
+                        <i class="ni ni-calendar-grid-58 text-orange"></i> {{ __('กำหนดการ') }}
                     </a>
                 </li>
 
+                @if (auth()->user()->role_id == 2 || auth()->user()->role_id == 3)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('selection') }}">
                         <i class="ni ni-check-bold text-success"></i> {{ __('เลือก OKI') }}
@@ -94,26 +100,32 @@
                         <i class="ni ni-send text-info"></i> {{ __('ยื่นผลงาน') }}
                     </a>
                 </li>
+                @endif
 
-                @if(auth()->user()->role_id == 4)
+                @if (auth()->user()->role_id == 5)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('waiting') }}">
-                        <i class="ni ni-bullet-list-67 text-warning"></i> {{ __('ตัวชี้วัดที่รอการอนุมัติ') }}
+                        <i class="ni ni-bullet-list-67 text-success"></i> {{ __('ตัวชี้วัดที่รอการอนุมัติ') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('head') }}">
-                        <i class="ni ni-single-02 text-warning"></i> {{ __('หัวหน้างาน') }}
+                        <i class="ni ni-single-02 text-danger"></i> {{ __('หัวหน้างาน') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('settings') }}">
-                        <i class="ni ni-settings text-danger"></i> {{ __('จัดการตัวชี้วัด') }}
+                        <i class="ni ni-settings text-info"></i> {{ __('จัดการตัวชี้วัด') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('assign') }}">
-                        <i class="ni ni-settings-gear-65 text-warning"></i> {{ __('กำหนดหัวหน้างาน') }}
+                        <i class="ni ni-settings-gear-65 text-primary"></i> {{ __('กำหนดหัวหน้างาน') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('assign') }}">
+                        <i class="ni ni-circle-08 text-success"></i> {{ __('จัดการสิทธิ์ผู้ใช้') }}
                     </a>
                 </li>
                 @endif
