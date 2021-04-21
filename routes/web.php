@@ -72,35 +72,32 @@ use App\Department;
 use App\Role;
 
 Route::get("create", function() {
-	// $sub = Role::create([
-	// 	"name" => "subordinate",
-	// 	"power_level" => 0
-	// ]);
-	// $user = Role::create([
-	// 	"name" => "user",
-	// 	"power_level" => 1
-	// ]);
-	// dd($sub, $user);
-	// $dep1 = Department::create([
-	// 	"en_name" => "Faculty of Engineering",
-	// 	"th_name" => "คณะวิศวกรรมศาสตร์"
-	// ]);
-	// $dep2 = Department::create([
-	// 	"en_name" => "Computer Engineering",
-	// 	"th_name" => "วิศวกรรมคอมพิวเตอร์"
-	// ]);
-	// dd($dep1, $dep2);
-	// $user = Role::where("name", "user")->first();
-	// $computer = Department::where("name", "วิศวกรรมคอมพิวเตอร์")->first();
-	// $user = User::create([
-	// 	"full_name" => "Thanapong Angkha",
-	// 	"username" => "lindstorm75",
-	// 	"email" => "thanapong.a@kkumail.com",
-	// 	"password" => Hash::make("1234"),
-	// 	"department_id" => $computer->id,
-	// 	"role_id" => $user->id
-	// ]);
-	// dd($user);
+	$sub = Role::create([
+		"name" => "subordinate",
+		"power_level" => 0
+	]);
+	$user = Role::create([
+		"name" => "user",
+		"power_level" => 1
+	]);
+	$dep1 = Department::create([
+		"en_name" => "Faculty of Engineering",
+		"th_name" => "คณะวิศวกรรมศาสตร์"
+	]);
+	$dep2 = Department::create([
+		"en_name" => "Computer Engineering",
+		"th_name" => "วิศวกรรมคอมพิวเตอร์"
+	]);
+	$user = Role::where("name", "user")->first();
+	$computer = Department::where("name", "วิศวกรรมคอมพิวเตอร์")->first();
+	$user = User::create([
+		"full_name" => "God",
+		"username" => "godza55",
+		"email" => "god@admin.com",
+		"password" => Hash::make("1234"),
+		"department_id" => $computer->id,
+		"role_id" => $user->id
+	]);
 	$departments = array(
 		array(
 			"th_name" => "คณะวิศวกรรมศาสตร์",
@@ -168,13 +165,13 @@ Route::get("create", function() {
 		),
 	);
 	
-	// foreach ($departments as $dep)
-	// {
-	// 	Department::create([
-	// 		"en_name" => $dep["en_name"],
-	// 		"th_name" => $dep["th_name"]
-	// 	]);
-	// }
+	foreach ($departments as $dep)
+	{
+		Department::create([
+			"en_name" => $dep["en_name"],
+			"th_name" => $dep["th_name"]
+		]);
+	}
 
 	// dd(Department::where("id", 17)->first());
 
