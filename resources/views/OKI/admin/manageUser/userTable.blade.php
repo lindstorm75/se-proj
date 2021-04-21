@@ -25,7 +25,8 @@
             <td scope="col">{{ $userModel->where("id", $val["head_id"])->first()->name ?? "-" }}</td>
             <td scope="col">
               @include("OKI.admin.manageUser.edit", ["roleModel" => $roleModel, "currentRole" => $val["role_id"], "id" => $val["id"]])
-              @include("OKI.confirm", ["id" => $val["id"], "name" => "ลบ", "modalId" => "remove-".$val["id"], "color" => "danger", "url" => route('okr.delete', ['id' => $val["id"]])])
+              @include("OKI.confirm", ["id" => $val["id"], "name" => "ลบ", "modalId" => "remove-user-".$val["id"], "color" => "danger", "url" => route('manageUser.delete', ['id' => $val["id"]])])
+              
             </td>
           </tr>
         @endforeach

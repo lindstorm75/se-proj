@@ -11,7 +11,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('manageUser') }}" method="POST">
+      <form action="{{ route('manageUser', ['id' => $id]) }}" method="POST">
         @csrf
         <input name="id" type="hidden" value="{{ $id }}">
         <div class="modal-body">

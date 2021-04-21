@@ -25,9 +25,14 @@
         <i class="ni ni-bold-right text-danger"></i> <span>เลือกผู้ใช้</span>
       </h2>
       <div>
-      @include("OKI.admin.manageUser.add")
+
       </div>
     </div>
+    @if (Session::has('status'))
+    <div class="alert alert-danger" role="alert">
+      {{ Session::get('status') }}
+    </div>
+    @endif
     @include("OKI.admin.manageUser.userTable", ["data" => $users, "roleModel" => $roleModel, "departmentModel" => $departmentModel])
   </div>
 

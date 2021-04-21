@@ -27,4 +27,16 @@ class UserManagementController extends Controller
         User::where("id", $request->id)->first()->update($request->only("role_id"));
         dd(User::all());
     }
+
+    public function destroy($id)
+    {
+        $powerLevel = Role::where("id", auth()->user()->role_id)->first()->power_level;
+        if ($powerLevel < 3)
+            return back()->withStatus("มีข้อผิดพลาดเกิดขึ้น โปรดลองใหม่อีกครั้ง");
+        else
+        {   
+            User::destroy($id);
+            return back()->withStatus("ลบผู้ใช้สำเร็จ");
+        }
+    }
 }

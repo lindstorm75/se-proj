@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post("assign", "AssignController@store");
 	Route::get("user", "UserManagementController@index")->name("manageUser");
 	Route::post("user", "UserManagementController@update");
+	Route::get("user/{id}", "UserManagementController@destroy")->name("manageUser.delete");
 	//
 	Route::get("waiting", "WaitingOKRController@index")->name("waiting");
 });
@@ -320,4 +321,18 @@ Route::get("createSelection", function() {
 	}
 
 	dd(Okr::all());
+});
+
+Route::get("createMockUser", function() {
+	$sub = Role::where("name", "subordinate")->first();
+	$computer = Department::where("th_name", "วิศวกรรมคอมพิวเตอร์")->first();
+	$user = User::create([
+		"full_name" => "Peasant",
+		"username" => "peasant55",
+		"email" => "peasant@gmail.com",
+		"password" => Hash::make("12345678"),
+		"department_id" => $computer->id,
+		"role_id" => $sub->id
+	]);
+	dd($user);
 });
