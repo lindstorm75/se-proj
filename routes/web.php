@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view("lmao");
+	return view('welcome');
 });
 
 Auth::routes();
@@ -56,12 +57,11 @@ Route::get('/clear-cache', function() {
 
 use Laravel\Socialite\Facades\Socialite;
 
-Route::get('/auth/redirect', "GoogleAuthController@handleProviderRedirect");
+Route::get('/auth/redirect', "Auth\\GoogleAuthController@handleProviderRedirect");
 
 use App\User;
-use App\SocialAccount;
 
-Route::get('/auth/callback', "GoogleAuthController@handleProviderCallback");
+Route::get('/auth/callback', "Auth\\GoogleAuthController@handleProviderCallback");
 
 Route::get("register", function() {
 	return redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
@@ -72,6 +72,24 @@ use App\Department;
 use App\Role;
 
 Route::get("create", function() {
+	// $sub = Role::create([
+	// 	"name" => "subordinate",
+	// 	"power_level" => 0
+	// ]);
+	// $user = Role::create([
+	// 	"name" => "user",
+	// 	"power_level" => 1
+	// ]);
+	// dd($sub, $user);
+	$dep1 = Department::create([
+		"en_name" => "Faculty of Engineering",
+		"th_name" => "คณะวิศวกรรมศาสตร์"
+	]);
+	$dep2 = Department::create([
+		"en_name" => "Computer Engineering",
+		"th_name" => "วิศวกรรมคอมพิวเตอร์"
+	]);
+	dd($dep1, $dep2);
 	// $user = Role::where("name", "user")->first();
 	// $computer = Department::where("name", "วิศวกรรมคอมพิวเตอร์")->first();
 	// $user = User::create([

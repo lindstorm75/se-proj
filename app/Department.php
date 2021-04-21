@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     protected $fillable = [
-        "name"
+        "en_name", "th_name"
     ];
 }

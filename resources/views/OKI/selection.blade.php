@@ -14,10 +14,6 @@
                     </ol>
                   </nav>
                 </div>
-                <div class="col-lg-6 col-5 text-right">
-                  <a href="#" class="btn btn-sm btn-neutral">New</a>
-                  <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-                </div>
               </div>
             </div>
           </div>
@@ -30,13 +26,13 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="first_name">ชื่อ</label>
-                  <input type="text" class="form-control" id="first_name" placeholder="สมหมาย">
+                  <input type="text" class="form-control" id="first_name" placeholder="สมหมาย" value="{{ explode(' ', auth()->user()->full_name)[0] }}">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="last_name">สกุล</label>
-                  <input type="text" class="form-control" id="last_name" placeholder="ใจดี">
+                  <input type="text" class="form-control" id="last_name" placeholder="ใจดี" value="{{ explode(' ', auth()->user()->full_name)[1] }}">
                 </div>
               </div>
             </div>
