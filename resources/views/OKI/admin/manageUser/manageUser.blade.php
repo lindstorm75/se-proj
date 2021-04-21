@@ -28,13 +28,22 @@
 
       </div>
     </div>
-    @if (Session::has('status'))
-    <div class="alert alert-danger" role="alert">
-      {{ Session::get('status') }}
+    @if (Session::has("message") && Session::has("alertColor"))
+    <div class="alert alert-{{ Session::get('alertColor') }}" role="alert">
+      {{ Session::get("message") }}
     </div>
     @endif
     @include("OKI.admin.manageUser.userTable", ["data" => $users, "roleModel" => $roleModel, "departmentModel" => $departmentModel])
   </div>
 
   @include('layouts.footers.auth')
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        const alert = document.querySelector(".alert")
+        if (alert) alert.remove()
+      }, 5000)
+    })
+  </script>
 @endsection

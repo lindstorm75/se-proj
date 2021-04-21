@@ -13,17 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-	return view("lmao");
-	return view('welcome');
-});
-
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
@@ -55,7 +47,7 @@ Route::get('/clear-cache', function() {
 	$exitCode = Artisan::call('config:clear');
 	$exitCode = Artisan::call('cache:clear');
 	$exitCode = Artisan::call('config:cache');
-	return 'DONE'; //Return anything
+	return 'DONE';
 });
 
 use Laravel\Socialite\Facades\Socialite;

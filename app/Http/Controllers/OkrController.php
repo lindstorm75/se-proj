@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Okr;
 use Illuminate\Http\Request;
+use Session;
 
 class OkrController extends Controller
 {
@@ -22,14 +23,23 @@ class OkrController extends Controller
             "detail" => "required|string",
             "unit" => "required|string",
         ]);
-        Okr::create([
+        if (Okr::create([
             "category" => $request->category,
             "subject" => $request->subject,
             "detail" => $request->detail,
             "unit" => $request->unit,
             "creator_id" => auth()->user()->id
-        ]);
-        return redirect()->route("okr");
+        ]))
+        {
+            Session::flash("message", "เพิ่มตัวชี้วัดสำเร็จ");
+            Session::flash("alertColor", "success");
+        }
+        else
+        {
+            Session::flash("message", "เกิดข้อผิดพลาด โปรดลองอีกครั้ง");
+            Session::flash("alertColor", "danger");
+        }
+        return back();
     }
 
     public function update(Request $request)
@@ -40,13 +50,31 @@ class OkrController extends Controller
             "detail" => "required|string",
             "unit" => "required|string",
         ]);
-        Okr::where('id', $request->id)->first()->update($request->only("category", "subject", "detail", "unit"));
-        return redirect()->route("okr");
+        if (Okr::where('id', $request->id)->first()->update($request->only("category", "subject", "detail", "unit")))
+        {
+            Session::flash("message", "อัปเดตตัวชี้วัดสำเร็จ");
+            Session::flash("alertColor", "success");
+        }
+        else
+        {
+            Session::flash("message", "เกิดข้อผิดพลาด โปรดลองอีกครั้ง");
+            Session::flash("alertColor", "danger");
+        }
+        return back();
     }
 
     public function destroy($id)
     {
-        Okr::destroy($id);
-        return redirect()->route("okr");
+        if (Okr::destroy($id))
+        {
+            Session::flash("message", "ลบตัวชี้วัดสำเร็จ");
+            Session::flash("alertColor", "success");
+        }
+        else
+        {
+            Session::flash("message", "เกิดข้อผิดพลาด โปรดลองอีกครั้ง");
+            Session::flash("alertColor", "danger");
+        }
+        return back();
     }
 }

@@ -132,6 +132,20 @@
                     </a>
                 </li>
                 @endif
+
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('profile.edit') }}">
+                        <i class="ni ni-single-02 text-warning"></i> {{ __('โปรไฟล์') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                        <i class="ni ni-user-run text-danger"></i> {{ __('ออกจากระบบ') }}
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

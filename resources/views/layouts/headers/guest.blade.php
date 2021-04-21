@@ -1,8 +1,13 @@
-<div class="header bg-gradient-danger py-7 py-lg-8">
+<div class="header bg-gradient-danger py-lg-4">
     <div class="container">
-        <div class="header-body text-center mb-7">
+        <div class="header-body text-center mb-8">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-6">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/th/thumb/a/a6/Engineering_KKU_Thai_Emblem.png/200px-Engineering_KKU_Thai_Emblem.png"
+                        alt="Faculty of Engineering's logo"
+                        width="150px"
+                    >
                     <h1 class="text-white">{{ __('Welcome to Engineering OKI') }}</h1>
                 </div>
             </div>
