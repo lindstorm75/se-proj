@@ -27,7 +27,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get("schedule", "ScheduleController@index")->name("schedule");
 
 	Route::get("print", "PDFController@get")->name("getPdf");
+	Route::post("generate", "PDFController@generate")->name("generatePdf");
 	Route::get("selection", "SelectionController@index")->name("selection");
+	Route::post("selection", "SelectionController@store");
 	Route::get("update", "UpdateController@index")->name("update");
 	Route::post("update", "UpdateController@store");
 	Route::get("head", "HeadController@index")->name("head");
