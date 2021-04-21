@@ -11,7 +11,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('settings.update') }}" method="POST">
+      <form action="{{ route('okr.update') }}" method="POST">
         @csrf
         <input name="id" type="hidden" value="{{ $id }}">
         <div class="modal-body">

@@ -38,9 +38,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get("head", "HeadController@index")->name("head");
 
 	// Admin
-	Route::get("settings", "SettingsController@index")->name("settings");
-	Route::post("settings/add", "SettingsController@store")->name("settings.add");
-	Route::post("settings/update", "SettingsController@update")->name("settings.update");
+	Route::get("okr", "OkrController@index")->name("okr");
+	Route::post("okr/add", "OkrController@store")->name("okr.add");
+	Route::post("okr/update", "OkrController@update")->name("okr.update");
+	Route::get("okr/{id}", "OkrController@destroy")->name("okr.delete");
 	Route::get("assign", "AssignController@index")->name("assign");
 	Route::post("assign", "AssignController@store");
 
@@ -102,17 +103,17 @@ Route::get("create", function() {
 	// 	"th_name" => "วิศวกรรมคอมพิวเตอร์"
 	// ]);
 	// dd($dep1, $dep2);
-	$admin = Role::where("name", "admin")->first();
-	$computer = Department::where("th_name", "วิศวกรรมคอมพิวเตอร์")->first();
-	$user = User::create([
-		"full_name" => "God",
-		"username" => "godza555",
-		"email" => "god@gmail.com",
-		"password" => Hash::make("12345678"),
-		"department_id" => $computer->id,
-		"role_id" => $admin->id
-	]);
-	dd($user);
+	// $admin = Role::where("name", "admin")->first();
+	// $computer = Department::where("th_name", "วิศวกรรมคอมพิวเตอร์")->first();
+	// $user = User::create([
+	// 	"full_name" => "God",
+	// 	"username" => "godza555",
+	// 	"email" => "god@gmail.com",
+	// 	"password" => Hash::make("12345678"),
+	// 	"department_id" => $computer->id,
+	// 	"role_id" => $admin->id
+	// ]);
+	// dd($user);
 	$departments = array(
 		array(
 			"th_name" => "คณะวิศวกรรมศาสตร์",
@@ -195,4 +196,127 @@ Route::get("create", function() {
 
 Route::get("test", function() {
 	dd(auth()->user()->role_id);
+});
+
+use App\Okr;
+
+Route::get("createSelection", function() {
+	$subjects = array(
+		array(
+			"category" => "technical",
+			"subject" => "จำนวนนักศึกษาระดับบัณฑิตศึกษาภายใต้การดูแลของท่านที่ได้รับการสนับสนุนที่มีคุณภาพมากกว่าเกณฑ์มาตรฐาน สกอ.",
+			"detail" => "ท่านได้เป็นที่ปรึกษาที่ดูแลนักศึกษาและทำให้นักศึกษามีผลงานตีพิมพ์มากกว่าเกณฑ์มาตรฐาน สกอ.",
+			"unit" => "คน"
+		),
+		array(
+			"category" => "technical",
+			"subject" => "จำนวนโครงการวิจัยในรูปแบบแผนบูรณาการงานวิจัย (Research program)",
+			"detail" => "อาจารย์ได้มีส่วนร่วมในการทำโครงการวิจัยที่เกิดจากการบูรณาการงานวิจัยร่วมกับคณะอื่น",
+			"unit" => "โครงการ"
+		),
+		array(
+			"category" => "technical",
+			"subject" => "จำนวนโครงการที่ได้เริ่มดำเนินการการสร้างนวัตกรรมเชิงพาณิชย์",
+			"detail" => "อาจารย์มีโครงการหรือกิจกรรมที่ดำเนินการไปสู่การเกิดนวัตกรรมที่ทำให้เกิดรายได้แก่คณะในอนาคต",
+			"unit" => "โครงการ"
+		),
+		array(
+			"category" => "technical",
+			"subject" => "การดำรงตำแหน่งทางวิชาการที่สูงขึ้น",
+			"detail" => "ในรอบ 1 มกราคม 2564 - 31 ธันวาคมี้ 2564 อาจารย์ได้รับการตั้งแต่งให้ดำรงตำแหน่งทางวิซาการที่สูงขึ้น โดยนับวันที่สภามหาวิทยาลัยเห็นชอบ",
+			"unit" => "ศ., รศ., ผศ."
+		),
+		array(
+			"category" => "technical",
+			"subject" => "จำนวนเงินรายได้จากการบริการวิชาการ (จากการทำสัญญา)",
+			"detail" => "มีโครงการที่ทำสัญญาและเกิดรายได้จากการบริการวิชาการให้แก่คณะ",
+			"unit" => "บาท"
+		),
+		array(
+			"category" => "technical",
+			"subject" => "จำนวนโครงการบริการวิชาการที่ทำให้กับชุมชน",
+			"detail" => "มีโครงการที่ไปบริการวิชาการให้กับชุมชน",
+			"unit" => "โครงการ"
+		),
+		array(
+			"category" => "technical",
+			"subject" => "จำนวนผลงานที่ได้รับทุนสนับสนุนจากภายนอกที่ถูกนำไปใช้ประโยชน์ (CSV)",
+			"detail" => "มีโครงการที่สามารถนำงบประมาณจากหน่วยงานภายนอกไปช่วยสังคม โดยใช้ผลงานหรือองค์ความรู้ที่อาจารย์ผลิตขึ้นมา",
+			"unit" => "ผลงาน/ชิ้น"
+		),
+		array(
+			"category" => "technical",
+			"subject" => "จำนวนผลงานวิจัย/สิ่งประดิษฐ์/นวัตกรรม ด้าน Digital technology",
+			"detail" => "ต้องมีผลงานด้าน Digital technology",
+			"unit" => "ผลงาน/ชิ้น"
+		),
+		array(
+			"category" => "technical",
+			"subject" => "จำนวนนักศึกษาต่างชาติทั้งแบบปกติและ non-degree ภายใต้การดูแลของท่าน ทั้ง Outbound และ Inbound ระดับปริญญาตรีและระดับบัณฑิตศึกษา",
+			"detail" => "ท่านได้เป็นที่ปรึกษาที่ดูแลนักศึกษาต่างชาติทั้งแบบปกติและ non-degree ภายใต้การดูแลของท่านทั้ง Outbound และ Inbound ระดับปริญญาตรีและระดับบัณฑิตศึกษา",
+			"unit" => "คน"
+		),
+		array(
+			"category" => "technical",
+			"subject" => "โครงการฟาร์มอัจฉริยะ (Smart Farm)",
+			"detail" => "มีโครงการหรือกิจกรรมที่เกี่ยวกับด้านฟาร์มอัจฉริยะ (Smart Farm) โดยโครงการนั้นต้องถูกนำมาใช้ในการเรียนการสอน การทำวิจัย และการบริการวิชาการ ครบทั้ง 3 ด้าน",
+			"unit" => "โครงการ"
+		),
+		array(
+			"category" => "technical",
+			"subject" => "โครงการเมืองอัจฉริยะ (Smart City)",
+			"detail" => "มีโครงการหรือกิจกรรมที่เกี่ยวกับด้านเมืองอัจฉริยะ (Smart City) โดยโครงการนั้นต้องถูกนำมาใช้ในการเรียนการสอน การทำวิจัย และการบริการวิชาการ ครบทั้ง 3 ด้าน",
+			"unit" => "โครงการ"
+		),
+		array(
+			"category" => "technical",
+			"subject" => "จำนวนบทเรียนออนไลน์สะสม",
+			"detail" => "มีการอัดวีดีโอบทเรียน เพื่อให้ นศ. สามารถดูย้อนหลังได้",
+			"unit" => "บทเรียน"
+		),
+		array(
+			"category" => "support",
+			"subject" => "จำนวนโครงการที่ได้เริ่มดำเนินการ (การนวัตกรรมเชิงพาณิชย์)",
+			"detail" => "โครงการหรือกิจกรรมที่ดำเนินการไปสู่การเกิดนวัฒกรรมที่ทำให้เกิดรายได้แก่คณะในอนาคต",
+			"unit" => "โครงการ"
+		),
+		array(
+			"category" => "support",
+			"subject" => "จำนวนเงินรายได้จากการบริการวิชาการ (จากการทำสัญญา)",
+			"detail" => "โครงการที่ทำสัญญาและเกิดรายได้จากการบริการวิชาการให้แก่คณะ",
+			"unit" => "บาท"
+		),
+		array(
+			"category" => "support",
+			"subject" => "จำนวนโครงการบริการวิชาการที่ทำให้กับชุมชน",
+			"detail" => "โครงการที่ไปบริการวิชาการให้กับชุมชน",
+			"unit" => "โครงการ"
+		),
+		array(
+			"category" => "support",
+			"subject" => "จำนวนผลงานวิจัย/สิ่งประดิษฐ์/นวัตกรรม ด้าน Digital technology",
+			"detail" => "ผลงานด้าน Digital technology",
+			"unit" => "ผลงาน"
+		),
+		array(
+			"category" => "support",
+			"subject" => "จำนวนงานสะสมที่ได้รับการพัฒนาใหม่หรือปรับปรุง",
+			"detail" => "งานที่มีการพัฒนาขั้นตอน/ระบบ/วิธีการทำงาน หรืองานที่พัฒนาขึ้นมาใหม่",
+			"unit" => "ผลงาน"
+		),
+	);
+	$adminRole = Role::where("name", "admin")->first();
+    $admin = User::where("role_id", $adminRole->id)->first();
+	foreach($subjects as $sub)
+	{
+		Okr::create([
+			"category" => $sub["category"],
+			"subject" => $sub["subject"],
+			"detail" => $sub["detail"],
+			"unit" => $sub["unit"],
+            "creator_id" => $admin->id
+		]);
+	}
+
+	dd(Okr::all());
 });

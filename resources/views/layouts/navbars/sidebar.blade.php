@@ -114,7 +114,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('settings') }}">
+                    <a class="nav-link" href="{{ route('okr') }}">
                         <i class="ni ni-settings text-info"></i> {{ __('จัดการตัวชี้วัด') }}
                     </a>
                 </li>

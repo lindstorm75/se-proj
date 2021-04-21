@@ -1,8 +1,8 @@
-<button type="button" class="btn btn-outline-{{ $color }}" data-toggle="modal" data-target="#{{ $id }}">
+<button type="button" class="btn btn-outline-{{ $color }}" data-toggle="modal" data-target="#{{ $modalId }}">
   {{ $name }}
 </button>
 
-<div class="modal fade" id="{{ $id }}" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="{{ $modalId }}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -13,7 +13,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-        <button type="submit" class="btn btn-{{ $color }}">ยืนยัน</button>
+        <a href="{{ route('okr.delete', ['id' => $id]) }}" class="btn btn-{{ $color }} ">ยืนยัน</a>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('settings.add') }}" method="POST">
+      <form action="{{ route('okr.add') }}" method="POST">
         @csrf
         <div class="modal-body">
           <div class="form-group">
