@@ -77,7 +77,7 @@
                             @csrf
                             @method('put')
 
-                            <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
+                            <h4 class="text-muted mb-4">{{ __('ข้อมูลผู้ใช้') }}</h4>
                             
                             @if (session('status'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -90,8 +90,8 @@
 
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
-                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name', auth()->user()->name) }}" required autofocus>
+                                    <label class="form-control-label" for="input-name">{{ __('ชื่อ') }}</label>
+                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('ระบุชื่อ') }}" value="{{ old('name', auth()->user()->full_name) }}" required autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
@@ -100,20 +100,9 @@
                                     @endif
                                 </div>
 
-                                <div class="form-group{{ $errors->has('username') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-username">{{ __('Username') }}</label>
-                                    <input type="text" name="username" id="input-username" class="form-control form-control-alternative{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="{{ __('Username') }}" value="{{ old('usernanme', auth()->user()->username) }}" required autofocus>
-
-                                    @if ($errors->has('username'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('username') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-
                                 <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
-                                    <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}" required>
+                                    <label class="form-control-label" for="input-email">{{ __('อีเมล') }}</label>
+                                    <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('ระบุอีเมล') }}" value="{{ old('email', auth()->user()->email) }}" required>
 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
@@ -123,16 +112,18 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('department_id') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-department_id">{{ __('Department') }}</label>
-                                    <select type="text" name="department_id" id="input-department_id" class="form-control form-control-alternative{{ $errors->has('department_id') ? ' is-invalid' : '' }}" placeholder="{{ __('department_id') }}" value="{{ old('department_id', auth()->user()->department_id) }}"  required>
-                                        <option value=1> สาขาวิชาวิศวกรรมโยธา </option>
-                                        <option value=2> สาขาวิชาวิศวกรรมไฟฟ้า </option>
-                                        <option value="3"> สาขาวิชาวิศวกรรมเกษตร </option>
-                                        <option value="4"> สาขาวิชาวิศวกรรมอุตสาหการ </option>
-                                        <option value="5"> สาขาวิชาวิศวกรรมเครื่องกล </option>
-                                        <option value="6"> สาขาวิชาวิศวกรรมสิ่งแวดล้อม </option>
-                                        <option value="7"> สาขาวิชาวิศวกรรมเคมี </option>
-                                        <option value="8"> สาขาวิชาวิศวกรรมคอมพิวเตอร์ </option>
+                                    <label class="form-control-label" for="input-department_id">{{ __('สาขาวิชา') }}</label>
+                                    <select
+                                    type="text"
+                                    name="department_id"
+                                    id="input-department_id"
+                                    class="form-control form-control-alternative{{ $errors->has('department_id') ? ' is-invalid' : '' }}"
+                                    placeholder="{{ __('department_id') }}"
+                                    value="{{ old('department_id', auth()->user()->department_id) }}"
+                                    required>
+                                        @foreach ($departments as $dep)
+                                        <option {{ auth()->user()->department_id == $dep['id'] ? "selected" : "" }} value="{{ $dep['id'] }}">{{ $dep['th_name'] }}</option>
+                                        @endforeach
                                     </select>
                                     
                                     @if ($errors->has('department_id'))
@@ -143,8 +134,8 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('position') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-position">{{ __('Position') }}</label>
-                                    <input type="text" name="position" id="input-position" class="form-control form-control-alternative{{ $errors->has('position') ? ' is-invalid' : '' }}" placeholder="{{ __('position') }}" value="{{ old('position', auth()->user()->position) }}">
+                                    <label class="form-control-label" for="input-position">{{ __('ตำแหน่ง') }}</label>
+                                    <input type="text" name="position" id="input-position" class="form-control form-control-alternative{{ $errors->has('position') ? ' is-invalid' : '' }}" placeholder="{{ __('ระบุตำแหน่ง') }}" value="{{ old('position', auth()->user()->position) }}">
 
                                     @if ($errors->has('position'))
                                         <span class="invalid-feedback" role="alert">
@@ -160,11 +151,11 @@
                             </div>
                         </form>
                         <hr class="my-4" />
-                        <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
+                        <!-- <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
                             @csrf
                             @method('put')
 
-                            <h6 class="heading-small text-muted mb-4">{{ __('Password') }}</h6>
+                            <h4 class="text-muted mb-4">{{ __('รหัสผ่าน') }}</h4>
 
                             @if (session('password_status'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -177,7 +168,7 @@
 
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-current-password">{{ __('Current Password') }}</label>
+                                    <label class="form-control-label" for="input-current-password">{{ __('รหัสผ่านปัจจุบัน') }}</label>
                                     <input type="password" name="old_password" id="input-current-password" class="form-control form-control-alternative{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="{{ __('Current Password') }}" value="" required>
                                     
                                     @if ($errors->has('old_password'))
@@ -205,7 +196,7 @@
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Change password') }}</button>
                                 </div>
                             </div>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </div>
