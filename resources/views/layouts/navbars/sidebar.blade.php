@@ -102,15 +102,18 @@
                 </li>
                 @endif
 
+                @if (auth()->user()->role_id == 3)
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('head') }}">
+                        <i class="ni ni-single-02 text-danger"></i> {{ __('หัวหน้างาน') }}
+                    </a>
+                </li>
+                @endif
+
                 @if (auth()->user()->role_id == 5)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('waiting') }}">
                         <i class="ni ni-bullet-list-67 text-success"></i> {{ __('ตัวชี้วัดที่รอการอนุมัติ') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('head') }}">
-                        <i class="ni ni-single-02 text-danger"></i> {{ __('หัวหน้างาน') }}
                     </a>
                 </li>
                 <li class="nav-item">
