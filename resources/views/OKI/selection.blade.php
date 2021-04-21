@@ -51,15 +51,9 @@
                 <div class="form-group">
                   <label for="department">สังกัด</label>
                   <select class="form-control" id="department">
-                    <option>วิศวกรรมไฟฟ้า</option>
-                    <option>วิศวกรรมคอมพิวเตอร์</option>
-                    <option>วิศวกรรมโยธา</option>
-                    <option>วิศวกรรมเคมี</option>
-                    <option>วิศวกรรมดิจิตอล</option>
-                    <option>วิศวกรรมอิเล็กทรอนิกส์</option>
-                    <option>วิศวกรรมเครื่องกล</option>
-                    <option>วิศวกรรมเกษตร</option>
-                    <option>วิศวกรรมอุตสาหการ</option>
+                  @foreach ($departments as $dep)
+                    <option {{ auth()->user()->department_id == $dep->id ? "selected" : "" }}  value="{{ $dep->id }}">{{ $dep->th_name }}</option>
+                  @endforeach
                   </select>
                 </div>
               </div>

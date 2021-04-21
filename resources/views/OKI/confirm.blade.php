@@ -13,7 +13,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-        <a href="{{ route('okr.delete', ['id' => $id]) }}" class="btn btn-{{ $color }} ">ยืนยัน</a>
+        <a href="{{ $url }}" class="btn btn-{{ $color }} ">ยืนยัน</a>
       </div>
     </div>
   </div>

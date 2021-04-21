@@ -17,7 +17,7 @@
             <td scope="col">{{ $val["unit"] }}</td>
             <td scope="col">
               @include("OKI.forms.edit", ["id" => $val["id"], "category" => $val["category"], "subject" => $val["subject"], "detail" => $val["detail"], "unit" => $val["unit"] ])
-              @include("OKI.confirm", ["id" => $val["id"], "name" => "ลบ", "modalId" => "remove-".$val["id"], "color" => "danger"])
+              @include("OKI.confirm", ["id" => $val["id"], "name" => "ลบ", "modalId" => "remove-".$val["id"], "color" => "danger", "url" => route('okr.delete', ['id' => $val["id"]])])
             </td>
           </tr>
         @endforeach

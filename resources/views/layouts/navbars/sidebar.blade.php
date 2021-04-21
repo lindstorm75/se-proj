@@ -124,7 +124,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('assign') }}">
+                    <a class="nav-link" href="{{ route('manageUser') }}">
                         <i class="ni ni-circle-08 text-success"></i> {{ __('จัดการสิทธิ์ผู้ใช้') }}
                     </a>
                 </li>
