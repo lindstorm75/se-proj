@@ -56,21 +56,12 @@ Route::get('/clear-cache', function() {
 
 use Laravel\Socialite\Facades\Socialite;
 
-Route::get('/auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
-});
+Route::get('/auth/redirect', "GoogleAuthController@handleProviderRedirect");
 
 use App\User;
 use App\SocialAccount;
 
-Route::get('/auth/callback', function () {
-	$user = Socialite::driver('google')->user();
-
-	if (auth()->attempt(["email" => $user->getEmail(), "password" => "lmaofuckyou"]))
-	{
-		return view("dashboard");
-	}
-});
+Route::get('/auth/callback', "GoogleAuthController@handleProviderCallback");
 
 Route::get("register", function() {
 	return redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
