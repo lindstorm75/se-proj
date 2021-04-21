@@ -1,5 +1,5 @@
-<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#modal-user-edit-{{ $id }}">
-  แก้ไข
+<button type="button" rel="tooltip" class="btn btn-warning btn-icon btn-sm btn-simple" data-toggle="modal" data-target="#modal-user-edit-{{ $id }}">
+  <i style="font-size: 1rem" class="ni ni-settings-gear-65 pt-1"></i>
 </button>
 
 <div class="modal fade" id="modal-user-edit-{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

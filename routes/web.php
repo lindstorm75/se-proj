@@ -23,6 +23,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
+	//
+	Route::get("schedule", "ScheduleController@index")->name("schedule");
+
 	Route::get("print", "PDFController@get")->name("getPdf");
 	Route::get("selection", "SelectionController@index")->name("selection");
 	Route::get("update", "UpdateController@index")->name("update");

@@ -1,5 +1,5 @@
-<button type="button" class="btn btn-outline-{{ $color }}" data-toggle="modal" data-target="#{{ $modalId }}">
-  {{ $name }}
+<button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm btn-simple" data-toggle="modal" data-target="#{{ $modalId }}">
+  <i style="font-size: 1rem" class="ni ni-fat-remove pt-1"></i>
 </button>
 
 <div class="modal fade" id="{{ $modalId }}" tabindex="-1" role="dialog" aria-hidden="true">

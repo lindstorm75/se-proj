@@ -84,7 +84,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">
+                    <a class="nav-link" href="{{ route('schedule') }}">
                         <i class="ni ni-calendar-grid-58 text-orange"></i> {{ __('กำหนดการ') }}
                     </a>
                 </li>
