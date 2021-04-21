@@ -1,4 +1,4 @@
-<button type="button" rel="tooltip" class="btn btn-warning btn-icon btn-sm btn-simple" data-toggle="modal" data-target="#modal-user-edit-{{ $id }}">
+<button type="button" class="btn btn-warning btn-icon btn-sm btn-simple" data-toggle="modal" data-target="#modal-user-edit-{{ $id }}">
   <i style="font-size: 1rem" class="ni ni-settings-gear-65 pt-1"></i>
 </button>
 

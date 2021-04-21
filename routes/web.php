@@ -37,11 +37,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post("okr/add", "OkrController@store")->name("okr.add");
 	Route::post("okr/update", "OkrController@update")->name("okr.update");
 	Route::get("okr/{id}", "OkrController@destroy")->name("okr.delete");
-	Route::get("assign", "AssignController@index")->name("assign");
-	Route::post("assign", "AssignController@store");
+	Route::get("head", "HeadController@index")->name("head");
+	Route::post("head", "HeadController@store");
 	Route::get("user", "UserManagementController@index")->name("manageUser");
 	Route::post("user", "UserManagementController@update");
 	Route::get("user/{id}", "UserManagementController@destroy")->name("manageUser.delete");
+	Route::get("assign", "AssignController@index")->name("assign");
+
 	//
 	Route::get("waiting", "WaitingOKRController@index")->name("waiting");
 });
@@ -330,4 +332,27 @@ Route::get("createMockUser", function() {
 		"role_id" => $sub->id
 	]);
 	dd($user);
+});
+
+Route::get("createHeads", function() {
+	$head = Role::where("name", "head")->first();
+	$civil = Department::where("th_name", "วิศวกรรมโยธา")->first();
+	$chemical = Department::where("th_name", "วิศวกรรมเคมี")->first();
+	$user1 = User::create([
+		"full_name" => "สมชาย สบายดี",
+		"username" => "somchai44",
+		"email" => "somchai44@gmail.com",
+		"password" => Hash::make("1234"),
+		"department_id" => $civil->id,
+		"role_id" => $head->id
+	]);
+	$user2 = User::create([
+		"full_name" => "สมศรี ดีใจ",
+		"username" => "somsri1234",
+		"email" => "somsri1234@gmail.com",
+		"password" => Hash::make("1234"),
+		"department_id" => $chemical->id,
+		"role_id" => $head->id
+	]);
+	dd(User::all());
 });

@@ -32,25 +32,35 @@
                     <tr>
                         <th scope="col">ลำดับ</th>
                         <th scope="col">ชื่อสกุล</th>
+                        <th scope="col">อีเมล</th>
+                        <th scope="col">สาขาวิชา</th>
                         <th scope="col">ตำแหน่ง</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    @for ($i = 0; $i < 12; $i++)
+                    @foreach ($heads as $index => $head)
                         <tr>
                           <td scope="col" class="sort">
-                            <span>{{ $i + 1 }}</span>
+                            <span>{{ $index + 1 }}</span>
                           </td>
-                          <td scope="col" class="sort">นายสมหมาย ใจดี</td>
-                          <td scope="col" class="sort">{{ "พนักงานทำความสะอาด" }}</td>
+                          <td scope="col" class="sort">{{ $head->full_name }}</td>
+                          <td scope="col" class="sort">{{ $head->email }}</td>
+                          <td scope="col" class="sort">{{ $departmentModel->where("id", $head->department_id)->first()->th_name }}</td>
+                          <td scope="col" class="sort">{{ $head->position ?? "-" }}</td>
                           <td scope="col" class="sort">
-                            <button type="button" class="btn btn-outline-success">เลือก OKR</button>
-                            <button type="button" class="btn btn-outline-info">ยื่นผลงาน</button>
-                            <button type="button" class="btn btn-outline-warning">ดูสถานะ</button>
+                            <button type="button" rel="tooltip" class="btn btn-primary btn-icon btn-sm btn-simple">
+                              <i style="font-size: 1rem" class="ni ni-active-40 pt-1"> เลือกตัวชี้วัด</i>
+                            </button>
+                            <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm btn-simple">
+                              <i style="font-size: 1rem" class="ni ni-send pt-1"> ยื่นผลงาน</i>
+                            </button>
+                            <button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm btn-simple">
+                              <i style="font-size: 1rem" class="ni ni-active-40 pt-1"> ดูสถานะ</i>
+                            </button>
                           </td>
                         </tr>
-                    @endfor
+                    @endforeach
                     </tbody>
                 </table>
                 </div>

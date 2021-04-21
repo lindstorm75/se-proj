@@ -36,6 +36,19 @@
               <option value="industrial">วิศวกรรมอุตสาหการ</option>
             </select>
           </div>
+          <div class="d-flex align-items-center">
+            <div class="mr-2" style="width: 100%; height: 2px; background-color: #E8E8E8"></div>
+            <span>หรือ</span>
+            <div class="ml-2" style="width: 100%; height: 2px; background-color: #E8E8E8"></div>
+          </div>
+          <div class="form-group">
+            <label for="selected_user">เลือกผู้ใช้</label>
+            <select name="selected_user" class="form-control" data-toggle="select" data-placeholder="โปรดเลือกสังกัด">
+            @foreach ($users as $user)
+              <option value="">{{ $user->full_name }}</option>
+            @endforeach
+            </select>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
