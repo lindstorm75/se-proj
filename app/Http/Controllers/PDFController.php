@@ -29,6 +29,6 @@ class PDFController extends Controller
         $subject = $okr->subject;
         $amount = $request["amount-".$okr->id];
         $pdf = PDF::loadView('OKI/pdf', compact("fullName", "department", "position", "subject", "amount", "unit"));
-        return @$pdf->stream('OKI/pdf');
+        return @$pdf->download('OKI/pdf');
     }
 }

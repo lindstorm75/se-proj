@@ -19,14 +19,19 @@
           </div>
         </div>
         <div class="card px-4 px-md-6 py-5">
+        @if (Session::has("message") && Session::has("alertColor"))
+          <div class="alert alert-{{ Session::get('alertColor') }}" role="alert">
+            {{ Session::get("message") }}
+          </div>
+        @endif
           <h2 class="mb-4"><i class="ni ni-bold-right text-danger"></i><i class="ni ni-bold-right text-danger"></i> ส่วนที่ 1 ข้อมูลรายบุคคล</h2>
-          <form action="{{ route('generatePdf') }}" method="POST">
+          <form action="{{ route('continue') }}" method="POST" enctype="multipart/form-data">
           @csrf
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="full_name">ชื่อสกุล</label>
-                  <input name="full_name" type="text" class="form-control" id="first_name" placeholder="สมหมาย" value="{{ auth()->user()->full_name }}">
+                  <input name="full_name" type="text" class="form-control" id="first_name" placeholder="สมหมาย" value="{{ auth()->user()->full_name }}" required>
                 </div>
               </div>
             </div>
@@ -35,7 +40,7 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="rank">ตำแหน่ง</label>
-                  <select class="form-control" id="rank" name="position">
+                  <select class="form-control" id="rank" name="position" required>
                     <option value="ศาสตราจารย์">ศาสตราจารย์</option>
                     <option>รองศาสตราจารย์</option>ฃ
                   </select>
@@ -44,7 +49,7 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="department_id">สังกัด</label>
-                  <select class="form-control" name="department_id" id="department_id">
+                  <select class="form-control" name="department_id" id="department_id" required>
                   @foreach ($departments as $dep)
                     <option {{ auth()->user()->department_id == $dep->id ? "selected" : "" }}  value="{{ $dep->id }}">{{ $dep->th_name }}</option>
                   @endforeach
@@ -72,7 +77,7 @@
                       <tr>
                         <td scope="col" class="sort">
                           <div class="custom-control custom-radio" style="margin-bottom: 2.2rem">
-                            <input type="radio" id="okr-{{ $val['id'] }}" name="okr_id" value="{{ $val['id'] }}" class="custom-control-input">
+                            <input type="radio" id="okr-{{ $val['id'] }}" name="okr_id" value="{{ $val['id'] }}" class="custom-control-input" required>
                             <label class="custom-control-label" for="okr-{{ $val['id'] }}"></label>
                           </div>
                         </td>
@@ -97,5 +102,15 @@
             <button type="submit" class="btn btn-success float-right mt-4">ดำเนินการต่อ</button>
           </form>
         </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+              const alert = document.querySelector(".alert")
+              if (alert) alert.remove()
+            }, 5000)
+          })
+        </script>
+
         @include('layouts.footers.auth')
 @endsection

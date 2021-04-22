@@ -13,7 +13,6 @@
                                 <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/google.svg"></span>
                                 <span class="btn-inner--text">{{ __('Google') }}</span>
                             </a>
-                            </a>
                         </div>
                     </div>
                     <div class="card-body px-lg-5 py-lg-4">

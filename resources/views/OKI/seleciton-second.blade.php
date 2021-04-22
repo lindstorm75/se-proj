@@ -19,17 +19,26 @@
           </div>
         </div>
         <div class="card px-4 px-md-6 py-5">
-          <h2 class="mb-4"><i class="ni ni-bold-right text-danger"></i><i class="ni ni-bold-right text-danger"></i> ส่วนที่ 1 ข้อมูลรายบุคคล</h2>
-          <form action="{{ route('selection') }}" method="POST">
+          <h2 class="mb-4"><i class="ni ni-bold-right text-danger"></i><i class="ni ni-bold-right text-danger"></i> ส่วนที่ 3 เซ็นและอัปโหลดเอกสารบันทึกความเข้าใจ</h2>
+          <form action="{{ route('generatePdf') }}" method="POST">
           @csrf
-            <h2 class="mb-4"><i class="ni ni-bold-right text-danger"></i><i class="ni ni-bold-right text-danger"></i> ส่วนที่ 3 เซ็นและอัปโหลดเอกสารบันทึกความเข้าใจ</h2>
-              <p class="text-muted"><a href="{{ route('generatePdf') }}">สร้าง</a>เอกสารบันทึกความเข้าใจ</p>
-              <p class="text-muted">ดาวน์โหลดเอกสารสารบันทึกความเข้าใจเพื่อเซ็นรับทราบ <a href="{{ route('getPdf') }}">ที่นี่</a></p>
+            <input type="hidden" name="full_name" value="{{ $full_name }}">
+            <input type="hidden" name="department_id" value="{{ $departmentId }}">
+            <input type="hidden" name="position" value="{{ $position }}">
+            <input type="hidden" name="okr_id" value="{{ $okrId }}">
+            <input type="hidden" name="amount-{{ $okrId }}" value="{{ $amount }}">
+            <p>
+              <a href='#' onclick='this.parentNode.submit(); return false;'>ดาวน์โหลด</a>
+              เอกสารบันทึกความเข้าใจ
+            </p>
+          </form>
+          <form action="{{ route('selection') }}" method="POST" enctype="multipart/form-data">
+          @csrf
               <div class="row">
                 <div class="col-md-10 col-lg-6 col-xl-4">
                 <div class="form-group">
-                  <label for="file">อัปโหลดสารสารบันทึกความเข้าใจ</label>
-                  <input name="file" type="file" class="form-control-file" id="file">
+                  <label for="file">โปรดเซ็นรับทราบและอัปโหลดสารสาร</label>
+                  <input name="file" type="file" class="form-control-file" id="file" required>
                 </div>
               </div>
             </div>

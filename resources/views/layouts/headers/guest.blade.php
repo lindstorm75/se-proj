@@ -8,7 +8,7 @@
                         alt="Faculty of Engineering's logo"
                         width="150px"
                     >
-                    <h1 class="text-white">{{ __('Welcome to Engineering OKI') }}</h1>
+                    <h1 class="text-white mt-2">{{ __('Welcome to Engineering OKI') }}</h1>
                 </div>
             </div>
         </div>

@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get("print", "PDFController@get")->name("getPdf");
 	Route::post("generate", "PDFController@generate")->name("generatePdf");
 	Route::get("selection", "SelectionController@index")->name("selection");
+	Route::post("selection/continue", "SelectionController@continue")->name("continue");
 	Route::post("selection", "SelectionController@store");
 	Route::get("update", "UpdateController@index")->name("update");
 	Route::post("update", "UpdateController@store");
@@ -75,48 +76,32 @@ use Illuminate\Support\Facades\Hash;
 use App\Department;
 use App\Role;
 
-Route::get("create", function() {
-	// $sub = Role::create([
-	// 	"name" => "subordinate",
-	// 	"power_level" => 0
-	// ]);
-	// $user = Role::create([
-	// 	"name" => "user",
-	// 	"power_level" => 1
-	// ]);
-	// $head = Role::create([
-	// 	"name" => "head",
-	// 	"power_level" => 1
-	// ]);
-	// $dean = Role::create([
-	// 	"name" => "dean",
-	// 	"power_level" => 2
-	// ]);
-	// $admin = Role::create([
-	// 	"name" => "admin",
-	// 	"power_level" => 3
-	// ]);
-	// dd($sub, $user);
-	// $dep1 = Department::create([
-	// 	"en_name" => "Faculty of Engineering",
-	// 	"th_name" => "คณะวิศวกรรมศาสตร์"
-	// ]);
-	// $dep2 = Department::create([
-	// 	"en_name" => "Computer Engineering",
-	// 	"th_name" => "วิศวกรรมคอมพิวเตอร์"
-	// ]);
-	// dd($dep1, $dep2);
-	// $admin = Role::where("name", "admin")->first();
-	// $computer = Department::where("th_name", "วิศวกรรมคอมพิวเตอร์")->first();
-	// $user = User::create([
-	// 	"full_name" => "God",
-	// 	"username" => "godza555",
-	// 	"email" => "god@gmail.com",
-	// 	"password" => Hash::make("12345678"),
-	// 	"department_id" => $computer->id,
-	// 	"role_id" => $admin->id
-	// ]);
-	// dd($user);
+Route::get("createRoles", function() {
+	$sub = Role::create([
+		"name" => "subordinate",
+		"power_level" => 0
+	]);
+	$user = Role::create([
+		"name" => "user",
+		"power_level" => 1
+	]);
+	$head = Role::create([
+		"name" => "head",
+		"power_level" => 2
+	]);
+	$dean = Role::create([
+		"name" => "dean",
+		"power_level" => 3
+	]);
+	$admin = Role::create([
+		"name" => "admin",
+		"power_level" => 4
+	]);
+	dd(Role::all());
+	return redirect()->route("login");
+});
+
+Route::get("createDeps", function() {
 	$departments = array(
 		array(
 			"th_name" => "คณะวิศวกรรมศาสตร์",
@@ -184,27 +169,20 @@ Route::get("create", function() {
 		),
 	);
 	
-	// foreach ($departments as $dep)
-	// {
-	// 	Department::create([
-	// 		"en_name" => $dep["en_name"],
-	// 		"th_name" => $dep["th_name"]
-	// 	]);
-	// }
-
-	// dd(Department::where("id", 17)->first());
-
-	return redirect()->route("login");
-});
-
-Route::get("test", function() {
-	dd(auth()->user()->role_id);
+	foreach ($departments as $dep)
+	{
+		Department::create([
+			"en_name" => $dep["en_name"],
+			"th_name" => $dep["th_name"]
+		]);
+	}
+	dd(Department::all());
 });
 
 use App\Okr;
 
 Route::get("createSelection", function() {
-	$subjects = array(
+	$okrs = array(
 		array(
 			"category" => "technical",
 			"subject" => "จำนวนนักศึกษาระดับบัณฑิตศึกษาภายใต้การดูแลของท่านที่ได้รับการสนับสนุนที่มีคุณภาพมากกว่าเกณฑ์มาตรฐาน สกอ.",
@@ -309,15 +287,15 @@ Route::get("createSelection", function() {
 		),
 	);
 	$adminRole = Role::where("name", "admin")->first();
-    $admin = User::where("role_id", $adminRole->id)->first();
-	foreach($subjects as $sub)
+	$admin = User::where("role_id", $adminRole->id)->first();
+	foreach($okrs as $okr)
 	{
 		Okr::create([
-			"category" => $sub["category"],
-			"subject" => $sub["subject"],
-			"detail" => $sub["detail"],
-			"unit" => $sub["unit"],
-            "creator_id" => $admin->id
+			"category" => $okr["category"],
+			"subject" => $okr["subject"],
+			"detail" => $okr["detail"],
+			"unit" => $okr["unit"],
+			"creator_id" => $admin->id
 		]);
 	}
 
@@ -359,4 +337,18 @@ Route::get("createHeads", function() {
 		"role_id" => $head->id
 	]);
 	dd(User::all());
+});
+
+Route::get("crateAdmin", function() {
+	$admin = Role::where("name", "admin")->first();
+	$computer = Department::where("th_name", "วิศวกรรมคอมพิวเตอร์")->first();
+	$user = User::create([
+		"full_name" => "God",
+		"username" => "godza555",
+		"email" => "god@gmail.com",
+		"password" => Hash::make("12345678"),
+		"department_id" => $computer->id,
+		"role_id" => $admin->id
+	]);
+	dd($user);
 });

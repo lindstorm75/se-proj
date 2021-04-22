@@ -21,6 +21,7 @@ class CreateOkrRequestsTable extends Migration
             $table->foreign("okr_id")->references("id")->on("okrs")->onDelete('cascade');
             $table->string("amount");
             $table->boolean("is_approved");
+            $table->string("pdf_path");
             $table->timestamps();
         });
     }
