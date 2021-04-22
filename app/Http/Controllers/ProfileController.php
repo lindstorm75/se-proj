@@ -28,7 +28,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-
+    
         $request->validate([
             "name" => "required|string",
             "email" => "required|string",
@@ -36,7 +36,13 @@ class ProfileController extends Controller
             "position" => "required|string"
         ]);
 
-        auth()->user()->update($request->all());
+        $full_name = $request->name;
+        $email = $request->email;
+        $department_id = $request->department_id;
+        $position = $request->position;
+ 
+        auth()->user()->update(array("full_name"=>$full_name, "email"=>$email, "department_id"=>$department_id, "position"=>$position));
+
 
         return back()->withStatus(__('Profile successfully updated.'));
     }

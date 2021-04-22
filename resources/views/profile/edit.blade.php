@@ -89,6 +89,7 @@
                             @endif
 
                             <div class="pl-lg-4">
+                            
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('ชื่อ') }}</label>
                                     <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('ระบุชื่อ') }}" value="{{ old('name', auth()->user()->full_name) }}" required autofocus>
@@ -144,6 +145,7 @@
                                     @endif
                                 </div>
                  
+                                
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
