@@ -13,7 +13,12 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-        <a href="{{ route('confirmOkr', ['id' => 1]) }}" class="btn btn-success ">ยืนยัน</a>
+        <form action="{{ route('confirmOkr') }}" method="POST">
+        @csrf
+          <input type="hidden" name="okr_id" value="{{ $okr_id }}">
+          <input type="hidden" name="is_approved" value="true">
+          <button type="submit" class="btn btn-success">ยืนยัน</button> 
+        </form>
       </div>
     </div>
   </div>

@@ -119,7 +119,7 @@
                 @if (auth()->user()->role_id == 5)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('waiting') }}">
-                        <i class="ni ni-bullet-list-67 text-success"></i> {{ __('ตัวชี้วัดที่รอการอนุมัติ') }}
+                        <i class="ni ni-bullet-list-67 text-success"></i> {{ __('คำร้องขอตัวชี้วัดทั้งหมด') }}
                     </a>
                 </li>
                 <li class="nav-item">

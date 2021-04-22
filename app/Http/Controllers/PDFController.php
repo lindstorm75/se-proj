@@ -28,7 +28,6 @@ class PDFController extends Controller
 
     public function getPdf($fileName)
     {   
-        dd($fileName);
         return response()->download(storage_path('app/public/uploads/'.$fileName));
     }
 }

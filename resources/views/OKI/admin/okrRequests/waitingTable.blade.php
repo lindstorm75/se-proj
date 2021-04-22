@@ -20,18 +20,28 @@
             <td scope="col">{{ $val["amount"] }}</td>
             <td scope="col">
               <a href="{{ 'getPdf'.$val->pdf_path }}">
-                <button type="button" class="btn btn-info btn-icon btn-sm btn-simple">
+                <button type="button" class="btn btn-primary btn-icon btn-sm btn-simple">
                   <i style="font-size: 1rem" class="ni ni-cloud-download-95 text-white mt-1"></i>
                 </button>
               </a>
             </td>
             <td scope="col">
               @include("OKI.admin.okrRequests.declineOkr", [
+                "id" => $val["id"],
                 "modalId" => "decline-".($index + 1),
               ])
-              @include("OKI.admin.okrRequests.confirmOkr", [
-                "modalId" => "confirm-".($index + 1),
-              ])
+              @if (!$val["is_approved"])
+                @include("OKI.admin.okrRequests.confirmOkr", [
+                  "okr_id" => $val["okr_id"],
+                  "modalId" => "confirm-".($index + 1),
+                ])
+              @else
+                @include("OKI.admin.okrRequests.status", [
+                  "amount" => $val["amount"],
+                  "okr_id" => $val["okr_id"],
+                  "modalId" => "status-".($index + 1)
+                ])
+              @endif
             </td>
           </tr>
         @endforeach

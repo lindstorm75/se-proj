@@ -8,7 +8,7 @@
     <div class="col-xl-2">
         <ul class="nav nav-footer justify-content-center justify-content-xl-end">
             <li class="nav-item">
-                <a href="" class="text-muted nav-link">Made with ❤ by Doge</a>
+                <a href="" class="text-muted nav-link">Made with ❤ | Doge</a>
             </li>
         </ul>
     </div>

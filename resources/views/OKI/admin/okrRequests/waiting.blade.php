@@ -19,6 +19,11 @@
     </div>
   </div>
   <div class="card px-4 px-md-6 py-5">
+  @if (Session::has("message") && Session::has("alertColor"))
+    <div class="alert alert-{{ Session::get('alertColor') }}" role="alert">
+      {{ Session::get("message") }}
+    </div>
+  @endif
     <div class="d-flex justify-content-between align-items-center mb-2">
       <h2 class="d-inline-block">
         <i class="ni ni-bold-right text-danger"></i>
@@ -29,6 +34,15 @@
     </div>
     @include("OKI.admin.okrRequests.waitingTable")
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        const alert = document.querySelector(".alert")
+        if (alert) alert.remove()
+      }, 5000)
+    })
+  </script>
 
   @include('layouts.footers.auth')
 @endsection

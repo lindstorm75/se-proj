@@ -49,8 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//
 	Route::get("waiting", "OkrRequestController@index")->name("waiting");
-	Route::get("waiting/decline/{id}", "OkrRequestController@index")->name("confirmOkr");
-	Route::get("waiting/confirm/{id}", "OkrRequestController@index")->name("declineOkr");
+	Route::post("waiting/decline", "OkrRequestController@destroy")->name("declineOkr");
+	Route::post("waiting/confirm", "OkrRequestController@update")->name("confirmOkr");
 });
 
 Route::get('/clear-cache', function() {
