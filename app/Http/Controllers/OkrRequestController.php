@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class WaitingOKRController extends Controller
+class OkrRequestController extends Controller
 {
     public function index()
     {
@@ -25,6 +25,6 @@ class WaitingOKRController extends Controller
                 "amount" => "3",
             ),
         );
-        return view("OKI.waiting", ["data" => $waitingOKR]);
+        return view("OKI.admin.okrRequests.waiting", ["data" => $waitingOKR]);
     }
 }

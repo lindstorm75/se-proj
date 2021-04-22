@@ -18,10 +18,19 @@
             <td scope="col">{{ $val["name"] }}</td>
             <td scope="col">{{ $val["subject"] }}</td>
             <td scope="col">{{ $val["amount"] }}</td>
-            <td scope="col">file goes here</td>
             <td scope="col">
-              @include("OKI.confirm", ["name" => "ไม่อนุมัติ", "modalId" => "cancel-".$index, "color" => "danger", "url" => ""])
-              @include("OKI.confirm", ["name" => "อนุมัติ", "modalId" => "confirm".$index, "color" => "success", "url" => ""])
+              <button type="button" class="btn btn-info btn-icon btn-sm btn-simple">
+                <i style="font-size: 1rem" class="ni ni-cloud-download-95 text-white mt-1"></i>
+              </button>
+              file goes here
+            </td>
+            <td scope="col">
+              @include("OKI.admin.okrRequests.declineOkr", [
+                "modalId" => "decline-".($index + 1),
+              ])
+              @include("OKI.admin.okrRequests.confirmOkr", [
+                "modalId" => "confirm-".($index + 1),
+              ])
             </td>
           </tr>
         @endforeach

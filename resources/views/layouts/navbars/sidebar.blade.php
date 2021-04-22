@@ -5,8 +5,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        <a class="d-flex flex-column align-items-center mb--4" href="{{ route('home') }}">
+            <img
+                src="https://upload.wikimedia.org/wikipedia/th/thumb/a/a6/Engineering_KKU_Thai_Emblem.png/200px-Engineering_KKU_Thai_Emblem.png"
+                alt="EN KKU's logo"
+                width="100"
+                class="d-none d-md-block"
+            >
+            <h1 style="color: crimson" class="mt-2">Engineering OKI</h1>
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">

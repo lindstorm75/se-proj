@@ -47,7 +47,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get("assign", "AssignController@index")->name("assign");
 
 	//
-	Route::get("waiting", "WaitingOKRController@index")->name("waiting");
+	Route::get("waiting", "OkrRequestController@index")->name("waiting");
+	Route::get("waiting/decline/{id}", "OkrRequestController@index")->name("confirmOkr");
+	Route::get("waiting/confirm/{id}", "OkrRequestController@index")->name("declineOkr");
 });
 
 Route::get('/clear-cache', function() {
@@ -322,7 +324,7 @@ Route::get("createSelection", function() {
 	dd(Okr::all());
 });
 
-Route::get("createMockUser", function() {
+Route::get("createSubs", function() {
 	$sub = Role::where("name", "subordinate")->first();
 	$computer = Department::where("th_name", "วิศวกรรมคอมพิวเตอร์")->first();
 	$user = User::create([

@@ -28,7 +28,7 @@
       
       </div>
     </div>
-    @include("OKI.waitingTable")
+    @include("OKI.admin.okrRequests.waitingTable")
   </div>
 
   @include('layouts.footers.auth')
