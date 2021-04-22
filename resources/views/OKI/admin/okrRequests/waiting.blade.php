@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="header bg-gradient-danger pb-2 pt-6">
+  <div class="header bg-gradient-danger pb-2 pt-3">
     <div class="container-fluid">
       <div class="header-body">
         <div class="row align-items-center py-4">

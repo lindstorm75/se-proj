@@ -1,4 +1,4 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-6">
     <div class="container-fluid">
         <div class="header-body">
             <!-- Card stats -->
@@ -13,7 +13,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                        <i class="fas fa-chart-bar"></i>
+                                        <i class="fas fa-chalkboard"></i>
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                        <i class="fas fa-chart-pie"></i>
+                                        <i class="fas fa-life-ring"></i>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">รวม</h5>
                                     <span class="h2 font-weight-bold mb-0">924</span>
                                 </div>
                                 <div class="col-auto">
@@ -71,12 +71,12 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">ความก้าวหน้า</h5>
                                     <span class="h2 font-weight-bold mb-0">49,65%</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                        <i class="fas fa-percent"></i>
+                                        <i class="fas fa-percentage"></i>
                                     </div>
                                 </div>
                             </div>
