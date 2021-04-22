@@ -15,14 +15,15 @@
         @foreach ($data as $index => $val)
           <tr>
             <td scope="col">{{ $index + 1 }}</td>
-            <td scope="col">{{ $val["name"] }}</td>
-            <td scope="col">{{ $val["subject"] }}</td>
+            <td scope="col">{{ $userModel->where("id", $val["creator_id"])->first()->full_name }}</td>
+            <td scope="col">{{ $okrModel->where("id", $val["okr_id"])->first()->subject }}</td>
             <td scope="col">{{ $val["amount"] }}</td>
             <td scope="col">
-              <button type="button" class="btn btn-info btn-icon btn-sm btn-simple">
-                <i style="font-size: 1rem" class="ni ni-cloud-download-95 text-white mt-1"></i>
-              </button>
-              file goes here
+              <a href="{{ 'getPdf'.$val->pdf_path }}">
+                <button type="button" class="btn btn-info btn-icon btn-sm btn-simple">
+                  <i style="font-size: 1rem" class="ni ni-cloud-download-95 text-white mt-1"></i>
+                </button>
+              </a>
             </td>
             <td scope="col">
               @include("OKI.admin.okrRequests.declineOkr", [

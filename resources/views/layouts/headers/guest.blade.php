@@ -1,4 +1,4 @@
-<div class="header bg-gradient-danger py-lg-4">
+<div class="header bg-gradient-danger py-lg-4 py-4">
     <div class="container">
         <div class="header-body text-center mb-8">
             <div class="row justify-content-center">

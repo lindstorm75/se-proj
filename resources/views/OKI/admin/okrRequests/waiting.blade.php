@@ -25,7 +25,6 @@
         <i class="ni ni-bold-right text-danger"></i> <span>สายวิชาการ</span>
       </h2>
       <div>
-      
       </div>
     </div>
     @include("OKI.admin.okrRequests.waitingTable")
