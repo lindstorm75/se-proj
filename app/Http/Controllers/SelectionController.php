@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use App\Okr;
+use App\OkrRequest;
 use App\Department;
-use App\File;
 use Illuminate\Http\Request;
 use Session;
 use PDF;
@@ -27,7 +27,7 @@ class SelectionController extends Controller
             "okr_id" => "required|string",
         ]);
         $okrId = $request->okr_id;
-        if (!$request->$request["amount-".$okrId])
+        if (!$request["amount-".$okrId])
         {
             Session::flash("message", "โปรดกรอกข้อมูลให้ครบถ้วน");
             Session::flash("alertColor", "danger");
@@ -42,19 +42,27 @@ class SelectionController extends Controller
 
     public function store(Request $request)
     {   
-        $fileModel = new File;
-
         if($request->file())
         {
             $fileName = time().'_'.$request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
 
-            $fileModel->name = time().'_'.$request->file->getClientOriginalName();
-            $fileModel->file_path = '/storage/' . $filePath;
-            $fileModel->save();
-
-            Session::flash("message", "เลือกตัวชี้วัดสำเร็จแล้ว โปรดรอการยืนยัน");
-            Session::flash("alertColor", "success");
+            if (OkrRequest::create([
+                "creator_id" => auth()->user()->id,
+                "okr_id" => $request->okr_id,
+                'amount' => $request->amount,
+                "is_approved" => FALSE,
+                'pdf_path' => '/storage/'.$filePath
+            ]))
+            {
+                Session::flash("message", "เลือกตัวชี้วัดสำเร็จแล้ว โปรดรอการยืนยัน");
+                Session::flash("alertColor", "success");
+            }
+            else
+            {
+                Session::flash("message", "เกิดข้อผิดพลาด โปรดลองอีกครั้ง");
+                Session::flash("alertColor", "danger");
+            }
 
             return redirect()->route("update");
         }

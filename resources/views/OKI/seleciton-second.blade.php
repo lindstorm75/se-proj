@@ -28,12 +28,14 @@
             <input type="hidden" name="okr_id" value="{{ $okrId }}">
             <input type="hidden" name="amount-{{ $okrId }}" value="{{ $amount }}">
             <p>
-              <a href='#' onclick='this.parentNode.submit(); return false;'>ดาวน์โหลด</a>
+              <button type="submit" class="btn btn-success btn-sm">ดาวน์โหลด</button>
               เอกสารบันทึกความเข้าใจ
             </p>
           </form>
           <form action="{{ route('selection') }}" method="POST" enctype="multipart/form-data">
           @csrf
+              <input type="hidden" name="okr_id" value="{{ $okrId }}">
+              <input type="hidden" name="amount" value="{{ $amount }}">
               <div class="row">
                 <div class="col-md-10 col-lg-6 col-xl-4">
                 <div class="form-group">
