@@ -2,6 +2,16 @@
 
 @section('content')
     @include('layouts.headers.guest')
+    <style>
+        a#howto {
+        text-decoration: none;
+        color: #EF4444;
+        font-size: 1rem;
+        }
+        a#howto:hover {
+        color: #F87171;
+        }
+    </style>
     <div class="container mt--8 pb-2">
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
@@ -11,18 +21,17 @@
                         <div class="btn-wrapper text-center">
                             <a href="https://se-proj.en.kku.ac.th/g6/auth/redirect" class="btn btn-neutral btn-icon">
                                 <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/google.svg"></span>
-                                <span class="btn-inner--text">{{ __('Google') }}</span>
+                                <span class="btn-inner--text text-danger">{{ __('Google') }}</span>
                             </a>
                         </div>
                     </div>
                     <div class="card-body px-lg-5 py-2 py-md-4">
                         <div class="text-center text-muted mb-4">
-                                <a href="{{ route('howto') }}">{{ __('วิธีการใช้งานระบบ') }}</a>
+                            <a href="{{ route('howto') }}" id="howto">{{ __('วิธีการใช้งานระบบ') }}</a>
                             <br>
                         </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
-                            @csrf
-
+                        @csrf
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">

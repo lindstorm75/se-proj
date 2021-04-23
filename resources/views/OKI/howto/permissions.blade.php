@@ -8,7 +8,7 @@
       <li class="list-group-item pb-0">
         <p>
           <i class="fas fa-user text-danger"></i>
-          ระดับสิทธิ์ : <span class="badge badge-pill badge-danger" style="font-size: .8rem">4</span>
+          ระดับสิทธิ์ <span class="badge badge-pill badge-danger" style="font-size: .8rem">4</span>
           <ul>
             <li>
               <label>หน้าหลัก</label>
@@ -70,7 +70,7 @@
       <li class="list-group-item pb-0">
         <p>
           <i class="fas fa-user text-primary"></i>
-          ระดับสิทธิ์ : <span class="badge badge-pill badge-primary" style="font-size: .8rem">3</span>
+          ระดับสิทธิ์ <span class="badge badge-pill badge-primary" style="font-size: .8rem">3</span>
           <ul>
             <li>
               <label>หน้าหลัก</label>
@@ -98,7 +98,7 @@
       <li class="list-group-item pb-0">
         <p>
           <i class="fas fa-user text-info"></i>
-          ระดับสิทธิ์ : <span class="badge badge-pill badge-info" style="font-size: .8rem">2</span>
+          ระดับสิทธิ์ <span class="badge badge-pill badge-info" style="font-size: .8rem">2</span>
           <ul>
             <li>
               <label>หน้าหลัก</label>
@@ -125,7 +125,7 @@
       <li class="list-group-item pb-0">
         <p>
           <i class="fas fa-user text-success"></i>
-          ระดับสิทธิ์ : <span class="badge badge-pill badge-success" style="font-size: .8rem">1</span>
+          ระดับสิทธิ์ <span class="badge badge-pill badge-success" style="font-size: .8rem">1</span>
           <ul>
             <li>
               <label>หน้าหลัก</label>
@@ -168,7 +168,7 @@
       <li class="list-group-item pb-0">
         <p>
           <i class="fas fa-user text-warning"></i>
-          ระดับสิทธิ์ : <span class="badge badge-pill badge-warning" style="font-size: .8rem">0</span>
+          ระดับสิทธิ์ <span class="badge badge-pill badge-warning" style="font-size: .8rem">0</span>
           <ul>
             <li>
               <label>หน้าหลัก</label>

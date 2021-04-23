@@ -63,7 +63,7 @@
       <li class="list-group-item pb-0">
         <p>
           <i class="fas fa-user text-warning"></i>
-          ระดับสิทธิ์ : <span class="badge badge-pill badge-warning" style="font-size: .8rem">0</span> | <span>ลูกน้อง (Subordinate)</span>
+          ระดับสิทธิ์ <span class="badge badge-pill badge-warning" style="font-size: .8rem">0</span> | <span>ลูกน้อง (Subordinate)</span>
           <ul>
             <li>
               <label>อีเมล: sub1.se-proj06@gmail.com</label>

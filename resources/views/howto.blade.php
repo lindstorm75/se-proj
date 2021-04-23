@@ -36,7 +36,7 @@
         <a class="nav-link howto mb-sm-3 mb-md-0 active" id="tabs-text-1-tab" href="#sigin" aria-controls="tabs-text-1" aria-selected="true">การลงชื่อเข้าใช้</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link howto mb-sm-3 mb-md-0" id="tabs-text-2-tab" href="#accounts" aria-controls="tabs-text-2" aria-selected="false">บัญชีผู้ใช้งาน</a>
+        <a class="nav-link howto mb-sm-3 mb-md-0" id="tabs-text-2-tab" href="#accounts" aria-controls="tabs-text-2" aria-selected="false">บัญชีผู้ใช้งานที่มีในระบบ</a>
       </li>
       <li class="nav-item">
         <a class="nav-link howto mb-sm-3 mb-md-0" id="tabs-text-3-tab" href="#permissions" aria-controls="tabs-text-3" aria-selected="false">สิทธ์และสิ่งที่ทำได้</a>
