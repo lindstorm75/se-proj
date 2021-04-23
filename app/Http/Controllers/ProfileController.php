@@ -30,8 +30,9 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
+        dd($request->only("full_name", "department_id", "position"));
         $request->validate([
-            "name" => "required|string",
+            "full_name" => "required|string",
             "department_id" => "required|string",
             "position" => "required|string"
         ]);

@@ -20,34 +20,14 @@
                                 {{ Session::get("message") }}
                             </div>
                         @endif
-                        <form method="POST" action="{{ route('profile.update') }}" autocomplete="off">
+                        <form method="POST" action="{{ route('updateProfile') }}" autocomplete="off">
                             @csrf
-                            @method('put')
-
                             <h4 class="text-muted mb-4">{{ __('ข้อมูลผู้ใช้') }}</h4>
-                            
-                            @if (session('status'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {{ session('status') }}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            @endif
-
                             <div class="pl-lg-4">
-                            
-                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                <div class="form-group">
                                     <label class="form-control-label" for="input-name">{{ __('ชื่อ') }}</label>
-                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('ระบุชื่อ') }}" value="{{ old('name', auth()->user()->full_name) }}" required autofocus>
-
-                                    @if ($errors->has('name'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
-                                    @endif
+                                    <input type="text" name="full_name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('ระบุชื่อ') }}" value="{{ old('name', auth()->user()->full_name) }}" required autofocus>
                                 </div>
-
                                 <div class="form-group{{ $errors->has('department_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-department_id">{{ __('สาขาวิชา') }}</label>
                                     <select
@@ -62,23 +42,10 @@
                                         <option {{ auth()->user()->department_id == $dep['id'] ? "selected" : "" }} value="{{ $dep['id'] }}">{{ $dep['th_name'] }}</option>
                                         @endforeach
                                     </select>
-                                    
-                                    @if ($errors->has('department_id'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('department_id') }}</strong>
-                                        </span>
-                                    @endif
                                 </div>
-
                                 <div class="form-group{{ $errors->has('position') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-position">{{ __('ตำแหน่ง') }}</label>
                                     <input type="text" name="position" id="input-position" class="form-control form-control-alternative{{ $errors->has('position') ? ' is-invalid' : '' }}" placeholder="{{ __('ระบุตำแหน่ง') }}" value="{{ old('position', auth()->user()->position) }}">
-
-                                    @if ($errors->has('position'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('image') }}</strong>
-                                        </span>
-                                    @endif
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('บันทึก') }}</button>
@@ -143,7 +110,7 @@
                                 ตำแหน่ง
                                 <ul>
                                     <li>
-                                        <label>{{ $dep->position ?? "-  " }}</label>
+                                        <label>{{ auth()->user()->position ?? "-  " }}</label>
                                     </li>
                                 </ul>
                                 </p>

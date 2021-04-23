@@ -21,6 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::post('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+	Route::post("profile/update", "ProfileController@update")->name("updateProfile");
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
 	//
@@ -309,53 +310,96 @@ Route::get("createSelection", function() {
 	dd(Okr::all());
 });
 
-Route::get("createSubs", function() {
-	$sub = Role::where("name", "subordinate")->first();
-	$computer = Department::where("th_name", "วิศวกรรมคอมพิวเตอร์")->first();
-	$user = User::create([
-		"full_name" => "Peasant",
-		"username" => "peasant55",
-		"email" => "peasant@gmail.com",
+Route::get("createDean", function() {
+	$deanRole = Role::where("name", "dean")->first();
+	$en = Department::where("th_name", "คณะวิศวกรรมศาสตร์")->first();
+	$dean = User::create([
+		"full_name" => "dean se-proj06",
+		"username" => "dean",
+		"email" => "dean.se-proj06@gmail.com",
 		"password" => Hash::make("12345678"),
-		"department_id" => $computer->id,
-		"role_id" => $sub->id
+		"department_id" => $en->id,
+		"role_id" => $deanRole->id,
+		"position" => "รองศาสตราจารย์"
 	]);
-	dd($user);
+	dd($dean);
 });
 
-Route::get("createHeads", function() {
-	$head = Role::where("name", "head")->first();
-	$civil = Department::where("th_name", "วิศวกรรมโยธา")->first();
-	$chemical = Department::where("th_name", "วิศวกรรมเคมี")->first();
-	$user1 = User::create([
-		"full_name" => "สมชาย สบายดี",
-		"username" => "somchai44",
-		"email" => "somchai44@gmail.com",
-		"password" => Hash::make("1234"),
-		"department_id" => $civil->id,
-		"role_id" => $head->id
+Route::get("createSubs", function() {
+	$subRole = Role::where("name", "subordinate")->first();
+	$industrial = Department::where("th_name", "วิศวกรรมอุตสาหการ")->first();
+	$en = Department::where("th_name", "คณะวิศวกรรมศาสตร์")->first();
+	$sub1 = User::create([
+		"full_name" => "sub1 se-proj06",
+		"username" => "sub1",
+		"email" => "sub1.se-proj06@gmail.com",
+		"password" => Hash::make("12345678"),
+		"department_id" => $en->id,
+		"role_id" => $subRole->id,
+		"position" => "พนักงานรักษาความปลอดภัย"
 	]);
-	$user2 = User::create([
-		"full_name" => "สมศรี ดีใจ",
-		"username" => "somsri1234",
-		"email" => "somsri1234@gmail.com",
-		"password" => Hash::make("1234"),
-		"department_id" => $chemical->id,
-		"role_id" => $head->id
+	$sub1 = User::create([
+		"full_name" => "sub2 se-proj",
+		"username" => "sub2",
+		"email" => "sub2.se-proj06@gmail.com",
+		"password" => Hash::make("12345678"),
+		"department_id" => $industrial->id,
+		"role_id" => $subRole->id,
+		"position" => "พนักงานทำความสะอาด"
 	]);
 	dd(User::all());
+});
+
+Route::get("createHead", function() {
+	$headRole = Role::where("name", "head")->first();
+	$civil = Department::where("th_name", "วิศวกรรมโยธา")->first();
+	$head = User::create([
+		"full_name" => "สมชัย ใจเกเร",
+		"username" => "head",
+		"email" => "head.se-proj06@gmail.com",
+		"password" => Hash::make("12345678"),
+		"department_id" => $civil->id,
+		"role_id" => $headRole->id,
+		"position" => "รองศาสตราจารย์"
+	]);
+	dd($head, User::all());
 });
 
 Route::get("crateAdmin", function() {
 	$admin = Role::where("name", "admin")->first();
 	$computer = Department::where("th_name", "วิศวกรรมคอมพิวเตอร์")->first();
 	$user = User::create([
-		"full_name" => "God",
-		"username" => "godza555",
-		"email" => "god@gmail.com",
+		"full_name" => "ลินุส โตร์วัลดส์",
+		"username" => "admin",
+		"email" => "admin.se-proj06@gmail.com",
 		"password" => Hash::make("12345678"),
 		"department_id" => $computer->id,
 		"role_id" => $admin->id
 	]);
 	dd($user);
+});
+
+Route::get("createUsers", function() {
+	$userRole = Role::where("name", "user")->first();
+	$chemical = Department::where("th_name", "วิศวกรรมเคมี")->first();
+	$electrical = Department::where("th_name", "วิศวกรรมไฟฟ้า")->first();
+	$user1 = User::create([
+		"full_name" => "สมหมาย ใจดี",
+		"username" => "user1",
+		"email" => "user1.se-proj06@gmail.com",
+		"password" => Hash::make("12345678"),
+		"department_id" => $chemical->id,
+		"role_id" => $userRole->id,
+		"position" => "ผู้ช่วยรองศาสตราจารย์"
+	]);
+	$user2 = User::create([
+		"full_name" => "สมศรี ดีใจ",
+		"username" => "user2",
+		"email" => "user2.se-proj06@gmail.com",
+		"password" => Hash::make("12345678"),
+		"department_id" => $electrical->id,
+		"role_id" => $userRole->id,
+		"position" => "รองศาสตราจารย์"
+	]);
+	dd(User::all());
 });

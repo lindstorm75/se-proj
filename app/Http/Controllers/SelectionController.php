@@ -15,7 +15,8 @@ class SelectionController extends Controller
     {
         $technical = Okr::where("category", "technical")->get();
         $departments = Department::all();
-        return view("OKI.selection", ["data" => $technical, "departments" => $departments]);
+        $position = auth()->user()->position;
+        return view("OKI.selection", ["data" => $technical, "departments" => $departments, "position" => $position]);
     }
 
     public function continue(Request $request)

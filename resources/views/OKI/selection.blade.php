@@ -6,11 +6,11 @@
             <div class="header-body">
               <div class="row align-items-center py-4">
                 <div class="col-lg-6 col-7">
-                  <h6 class="h2 text-white d-inline-block mb-0">ยินดีต้อนรับเข้าสู่ระบบการเลือก OKR</h6>
+                  <h6 class="h2 text-white d-inline-block mb-0">ยินดีต้อนรับเข้าสู่ระบบการเลือก OKI</h6>
                   <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                     <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                       <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home text-danger"></i></a></li>
-                      <li class="breadcrumb-item">เลือก OKR</li>
+                      <li class="breadcrumb-item">เลือก OKI</li>
                     </ol>
                   </nav>
                 </div>
@@ -39,11 +39,8 @@
             <div class="row">
               <div class="col-md-3">
                 <div class="form-group">
-                  <label for="rank">ตำแหน่ง</label>
-                  <select class="form-control" id="rank" name="position" required>
-                    <option value="ศาสตราจารย์">ศาสตราจารย์</option>
-                    <option>รองศาสตราจารย์</option>ฃ
-                  </select>
+                  <label for="position">ตำแหน่ง</label>
+                  <input name="position" type="text" class="form-control" id="position" placeholder="สมหมาย" value="{{ $position }}" required>
                 </div>
               </div>
               <div class="col-md-3">
