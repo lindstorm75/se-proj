@@ -61,7 +61,7 @@
               <label>โปรไฟล์</label>
               <ul>
                 <li><label>ดูข้อมูลผู้ใช้</label></li>
-                <li><label>แก้ไข</label></li>
+                <li><label>แก้ไข</label> <span class="text-danger">(ยังไม่สามารถใช้งานได้)</span></li>
               </ul>
             </li>
           </ul>
@@ -89,7 +89,7 @@
               <label>โปรไฟล์</label>
               <ul>
                 <li><label>ดูข้อมูลผู้ใช้</label></li>
-                <li><label>แก้ไข</label></li>
+                <li><label>แก้ไข</label> <span class="text-danger">(ยังไม่สามารถใช้งานได้)</span></li>
               </ul>
             </li>
           </ul>
@@ -116,7 +116,7 @@
               <label>โปรไฟล์</label>
               <ul>
                 <li><label>ดูข้อมูลผู้ใช้</label></li>
-                <li><label>แก้ไข</label></li>
+                <li><label>แก้ไข</label> <span class="text-danger">(ยังไม่สามารถใช้งานได้)</span></li>
               </ul>
             </li>
           </ul>
@@ -159,7 +159,7 @@
               <label>โปรไฟล์</label>
               <ul>
                 <li><label>ดูข้อมูลผู้ใช้</label></li>
-                <li><label>แก้ไข</label></li>
+                <li><label>แก้ไข</label> <span class="text-danger">(ยังไม่สามารถใช้งานได้)</span></li>
               </ul>
             </li>
           </ul>
@@ -186,7 +186,7 @@
               <label>โปรไฟล์</label>
               <ul>
                 <li><label>ดูข้อมูลผู้ใช้</label></li>
-                <li><label>แก้ไข</label></li>
+                <li><label>แก้ไข</label> <span class="text-danger">(ยังไม่สามารถใช้งานได้)</span></li>
               </ul>
             </li>
           </ul>

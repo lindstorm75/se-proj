@@ -43,43 +43,41 @@
             </tr>
             </thead>
             <tbody>
-              @for ($i = 0; $i < 12; $i++)
-                <tr>
+              @foreach ($requests as $index => $val)
+              <tr>
                   <td scope="col" class="sort">
-                    <span>{{ $i + 1 }}</span>
+                    <span>{{ $index + 1 }}</span>
                   </td>
-                  <td scope="col" class="sort">หัวข้อที่ {{ $i + 1 }}</td>
+                  <td scope="col" class="sort">{{ $okrModel->where("id", $val->okr_id)->first()->subject }}</td>
                   <td scope="col" class="sort">
-                    <div class="form-group d-flex align-items-center">
-                      <input class="form-control" style="width: 5rem" type="number" value="{{ rand(1, 5) }}" id="example-number-input" disabled>
-                      <span class="ml-2">คน</span>
+                    <div class="form-group d-flex align-items-center mt-3">
+                      <input class="form-control" style="width: 5rem" type="number" value="{{ $val->amount }}" id="example-number-input" disabled>
+                      <span class="ml-2">{{ $okrModel->where("id", $val->okr_id)->first()->unit }}</span>
                     </div>
                   </td>
                   <td scope="col" class="sort">
-                    <span class="badge badge-pill badge-lg @if (($i + 1) * 10 == 10) badge-danger @elseif (($i + 1) * 10 == 100) badge-success @else badge-warning @endif" style="font-size: .8rem">
-                    @if (($i + 1) * 10 == 10)
-                      รออนุมัติ
-                    @elseif (($i + 1) * 10 == 100)
-                      เสร็จสิ้น
-                    @else
+                    <span class="badge badge-pill badge-lg @if ($val->is_approved) badge-warning @else badge-danger @endif" style="font-size: .8rem">
+                    @if ($val->is_approved)
                       กำลังดำเนินการ
+                    @else
+                      รออนุมัติ
                     @endif
                     </span>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#item-{{ $i + 1 }}">
+                  @if ($val->is_approved)
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#item-{{ $index + 1 }}">
                       เลือก
                     </button>
-
                     <!-- Modal -->
                     <form action="{{ route('update') }}" method="post">
                       @csrf
-                      <div class="modal fade" id="item-{{ $i + 1 }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="item-{{ $index + 1 }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                             
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">หัวข้อที่ {{ $i + 1 }}</h5>
+                              <h5 class="modal-title" id="exampleModalLabel">{{ $okrModel->where("id", $val->okr_id)->first()->name }}</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
@@ -91,11 +89,11 @@
                                     <span style="font-size: .9rem">ความก้าวหน้า</span>
                                   </div>
                                   <div class="progress-percentage">
-                                    <span>{{ ($i + 1) * 10 == 100 ? 100 : ($i + 1) * 10 % 100 }}%</span>
+                                    <span>50%</span>
                                   </div>
                                 </div>
                                 <div class="progress w-100 mt-2 mb-4">
-                                  <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($i + 1) * 10 == 100 ? 100 : ($i + 1) * 10 % 100 }}%;"></div>
+                                  <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
                                 </div>
                               </div>
                               <h2><i class="ni ni-send text-blue"></i> ยื่นผลงาน</h2>
@@ -122,9 +120,14 @@
                         </div>
                       </div>
                     </form>
+                  @else
+                    <button style="cursor: no-drop" type="button" class="btn btn-outline-success" disabled>
+                      เลือก
+                    </button>
+                  @endif
                   </td>
                 </tr>
-              @endfor
+              @endforeach
             </tbody>
         </table>
         </div>
