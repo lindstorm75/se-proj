@@ -24,6 +24,11 @@
         </div>
 
         <div class="card px-4 px-md-6 py-5">
+        @if (Session::has("message") && Session::has("alertColor"))
+          <div class="alert alert-{{ Session::get('alertColor') }}" role="alert">
+            {{ Session::get("message") }}
+          </div>
+        @endif
           <div class="d-flex justify-content-between align-items-center mb-2">
             <h2 class="d-inline-block">
               <i class="ni ni-bold-right text-danger"></i>
@@ -56,13 +61,9 @@
                           <td scope="col" class="sort">{{ $head->email }}</td>
                           <td scope="col" class="sort">{{ $departmentModel->where("id", $head->department_id)->first()->th_name }}</td>
                           <td scope="col" class="sort">{{ $head->position ?? "-" }}</td>
-                          <td scope="col" class="sort">
-                            <button type="button" rel="tooltip" class="btn btn-warning btn-icon btn-sm btn-simple">
-                              <i style="font-size: 1rem" class="ni ni-settings-gear-65 pt-1"></i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm btn-simple">
-                              <i style="font-size: 1rem" class="ni ni-fat-remove pt-1"></i>
-                            </button>
+                          <td>
+                            @include("OKI.admin.assign.edit", ["index" => $index, "subs" => $subs, "headId" => $head->id])
+                            @include("OKI.admin.assign.remove", ["index" => $index, "subs" => $subs, "headId" => $head->id])
                           </td>
                         </tr>
                     @endforeach

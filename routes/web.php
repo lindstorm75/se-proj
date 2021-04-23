@@ -47,6 +47,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post("user", "UserManagementController@update");
 	Route::get("user/{id}", "UserManagementController@destroy")->name("manageUser.delete");
 	Route::get("assign", "AssignController@index")->name("assign");
+	Route::post("assign", "AssignController@update");
+	Route::post("assign", "AssignController@destroy")->name("assign.remove");
 
 	//
 	Route::get("waiting", "OkrRequestController@index")->name("waiting");

@@ -44,8 +44,8 @@
               <label>จัดการหัวหน้างาน</label>
               <ul>
                 <li><label>ดูระละเอียดของหัวหน้างาน เช่น ชื่อ อีเมล</label></li>
-                <li><label>แก้ไขรายละเอียด <span class="text-danger">(ยังไม่สามารถใช้งานได้)</span></label></li>
-                <li><label>ลบหัวหน้างาน <span class="text-danger">(ยังไม่สามารถใช้งานได้)</span></label></li>
+                <li><label>แก้ไขรายละเอียด เช่น เพิ่มลูกน้อง</span></label></li>
+                <li><label>ลบหัวหน้างาน (ลดสิทธิ์เหลือ <span style="font-size: 1rem" class="badge badge-pill badge-success">ผู้ใช้ทั่วไป</span>)</label></li>
                 <li><label>กำหนดหัวหน้างานใหม่ <span class="text-danger">(ยังไม่สามารถใช้งานได้)</span></label></li>
               </ul>
             </li>
