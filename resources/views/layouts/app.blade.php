@@ -17,6 +17,15 @@
         <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+
+        <style>
+            body {
+                font-family: 'Prompt', sans-serif;
+            }
+        </style>
     </head>
     <body class="{{ $class ?? '' }} bg-white">
         @auth()

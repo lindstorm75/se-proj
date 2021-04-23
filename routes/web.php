@@ -60,6 +60,13 @@ Route::get('/clear-cache', function() {
 	return 'DONE';
 });
 
+Route::get("/howto", "HowToController@index")->name("howto");
+
+Route::fallback(function ()
+{
+    return view("notfound");
+});
+
 use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/auth/redirect', "Auth\\GoogleAuthController@handleProviderRedirect");

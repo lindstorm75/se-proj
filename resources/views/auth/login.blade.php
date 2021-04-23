@@ -17,14 +17,8 @@
                     </div>
                     <div class="card-body px-lg-5 py-2 py-md-4">
                         <div class="text-center text-muted mb-4">
-                            <small>
-                                <a href="{{ route('register') }}">{{ __('Create new account') }}</a> {{ __('OR Sign in with these credentials:') }}
-                            </small>
+                                <a href="{{ route('howto') }}">{{ __('วิธีการใช้งานระบบ') }}</a>
                             <br>
-                            <small>
-                                {{ __('Username') }} <strong>admin@admin.com</strong>
-                                {{ __('Password') }} <strong>12345678</strong>
-                            </small>
                         </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf

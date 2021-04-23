@@ -134,7 +134,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('manageUser') }}">
-                        <i class="ni ni-circle-08 text-success"></i> {{ __('จัดการสิทธิ์ผู้ใช้') }}
+                        <i class="ni ni-circle-08 text-success"></i> {{ __('จัดการผู้ใช้งาน') }}
                     </a>
                 </li>
                 @endif
