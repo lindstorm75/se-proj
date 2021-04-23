@@ -1,4 +1,32 @@
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/th/thumb/a/a6/Engineering_KKU_Thai_Emblem.png/200px-Engineering_KKU_Thai_Emblem.png" width="200"></a></p>
+
+<h1 align="center">Engineering OKI System</h1>
+
+<h2>🐱‍🏍 หน้าเว็บไซต์</h2>
+https://se-proj.en.kku.ac.th/g6/
+
+<h2>🐱‍💻 โครงสร้างฐานข้อมูล</h2>
+https://dbdiagram.io/d/607c6be6ef1b8f6b3dd5d4c8
+
+<h2>🐱‍👤 วิธีการใช้งาน</h2>
+https://se-proj.en.kku.ac.th/g6/howto
+
+<h2>🐱‍👓 Requirements</h2>
+https://se-proj.en.kku.ac.th/g6/howto
+
+<h2>👻 โปรโตไทป์</h2>
+https://xd.adobe.com/view/95f05d8d-4be8-4c2e-aa91-26d04e2200b6-c0a3/
+
+<hr>
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
