@@ -5,14 +5,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="d-flex flex-column align-items-center mb--4" href="{{ route('home') }}">
+        <a class="d-flex flex-column align-items-center mb--2 mb-md--4" href="{{ route('home') }}">
             <img
                 src="https://upload.wikimedia.org/wikipedia/th/thumb/a/a6/Engineering_KKU_Thai_Emblem.png/200px-Engineering_KKU_Thai_Emblem.png"
                 alt="EN KKU's logo"
                 width="100"
                 class="d-none d-md-block"
             >
-            <h1 style="color: crimson" class="mt-2">Engineering OKI</h1>
+            <h1 style="color: crimson; font-size: 1.5rem" class="mt-md-2">Engineering OKI</h1>
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -26,23 +26,11 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
+                        <h4 class="text-overflow m-0">{{ __('ยินดีต้อนรับ!') }}</h4>
                     </div>
                     <a href="{{ route('profile.edit') }}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
-                        <span>{{ __('My profile') }}</span>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="ni ni-settings-gear-65"></i>
-                        <span>{{ __('Settings') }}</span>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="ni ni-calendar-grid-58"></i>
-                        <span>{{ __('Activity') }}</span>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="ni ni-support-16"></i>
-                        <span>{{ __('Support') }}</span>
+                        <span>{{ __('ตั้งค่าบัญชีผู้ใช้') }}</span>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
@@ -143,7 +131,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('profile.edit') }}">
-                        <i class="ni ni-single-02 text-warning"></i> {{ __('โปรไฟล์') }}
+                        <i class="ni ni-single-02 text-warning"></i> {{ __('ตั้งค่าบัญชีผู้ใช้') }}
                     </a>
                 </li>
                 <li class="nav-item">

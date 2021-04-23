@@ -28,23 +28,29 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-    
+        dd($request);
         $request->validate([
             "name" => "required|string",
-            "email" => "required|string",
             "department_id" => "required|string",
             "position" => "required|string"
         ]);
 
         $full_name = $request->name;
-        $email = $request->email;
         $department_id = $request->department_id;
         $position = $request->position;
- 
-        auth()->user()->update(array("full_name"=>$full_name, "email"=>$email, "department_id"=>$department_id, "position"=>$position));
 
+        if (auth()->user()->update($request->only("full_name", "department_id", "position")))
+        {
+            Session::flash("message", "อัปเดตบัญชีผู้ใช้สำเร็จ");
+            Session::flash("alertColor", "success");
+        }
+        else
+        {
+            Session::flash("message", "เกิดข้อผิดพลาด โปรดลองอีกครั้ง");
+            Session::flash("alertColor", "danger");
+        }
 
-        return back()->withStatus(__('Profile successfully updated.'));
+        return back();
     }
 
     /**

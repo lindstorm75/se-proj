@@ -13,7 +13,7 @@
             <li>
               <label>หน้าหลัก</label>
               <ul>
-                <li><label>ดูภาพรวมของระบบ</label></li>
+                <li><label>ดูภาพรวมของระบบ <span class="text-warning">(ข้อมูลที่แสดงยังเป็นข้อมูลจำลอง ไม่ใช่ข้อมูลจากฐานข้อมูล)</span></label></li>
               </ul>
             </li>
             <li>
@@ -75,7 +75,7 @@
             <li>
               <label>หน้าหลัก</label>
               <ul>
-                <li><label>ดูภาพรวมของระบบ</label></li>
+                <li><label>ดูภาพรวมของระบบ <span class="text-warning">(ข้อมูลที่แสดงยังเป็นข้อมูลจำลอง ไม่ใช่ข้อมูลจากฐานข้อมูล)</span></label></li>
                 <li><label>ดูความก้าวหน้าตัวชี้วัดของผู้ใช้แต่ละคน <span class="text-danger">(ยังไม่สามารถใช้งานได้)</span></label></li>
               </ul>
             </li>
@@ -103,7 +103,7 @@
             <li>
               <label>หน้าหลัก</label>
               <ul>
-                <li><label>ดูภาพรวมของระบบ</label></li>
+                <li><label>ดูภาพรวมของระบบ <span class="text-warning">(ข้อมูลที่แสดงยังเป็นข้อมูลจำลอง ไม่ใช่ข้อมูลจากฐานข้อมูล)</span></label></li>
               </ul>
             </li>
             <li>
@@ -130,7 +130,7 @@
             <li>
               <label>หน้าหลัก</label>
               <ul>
-                <li><label>ดูภาพรวมของระบบ</label></li>
+                <li><label>ดูภาพรวมของระบบ <span class="text-warning">(ข้อมูลที่แสดงยังเป็นข้อมูลจำลอง ไม่ใช่ข้อมูลจากฐานข้อมูล)</span></label></li>
               </ul>
             </li>
             <li>
@@ -173,7 +173,7 @@
             <li>
               <label>หน้าหลัก</label>
               <ul>
-                <li><label>ดูภาพรวมของระบบ</label></li>
+                <li><label>ดูภาพรวมของระบบ <span class="text-warning">(ข้อมูลที่แสดงยังเป็นข้อมูลจำลอง ไม่ใช่ข้อมูลจากฐานข้อมูล)</span></label></li>
               </ul>
             </li>
             <li>
