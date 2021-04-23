@@ -57,7 +57,7 @@
             
             <br>
 
-            <h2 class="mb-4"><i class="ni ni-bold-right text-danger"></i><i class="ni ni-bold-right text-danger"></i> ส่วนที่ 2 เลือกหัวข้อ OKR</h2>
+            <h2 class="mb-4"><i class="ni ni-bold-right text-danger"></i><i class="ni ni-bold-right text-danger"></i> ส่วนที่ 2 เลือกหัวข้อ OKI</h2>
             <div class="table-responsive">
               <div>
                 <table class="table align-items-center">

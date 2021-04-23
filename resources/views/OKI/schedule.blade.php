@@ -22,7 +22,7 @@
   <div class="card px-4 px-md-6 py-5">
     <div class="card" style="width: 24rem;">
       <div class="card-title px-4 pt-4 mb-0">
-        <h2><i class="ni ni-calendar-grid-58 text-success"></i> กำหนดการลงทะเบียน OKR</h2>
+        <h2><i class="ni ni-calendar-grid-58 text-success"></i> กำหนดการลงทะเบียน OKI</h2>
         <hr>
       </div>
       <div class="card-body pt-0">
