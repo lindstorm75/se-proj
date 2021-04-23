@@ -1,4 +1,4 @@
-<div class="card" id="accuonts">
+<div class="card" id="accounts">
   <div class="card-title px-4 pt-4 mb-0">
     <h2><i class="fas fa-users"></i> บัญชีผู้ใช้งานที่ใช้งานได้</h2>
     <hr class="my-4">

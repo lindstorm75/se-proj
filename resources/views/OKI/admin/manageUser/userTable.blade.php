@@ -35,21 +35,6 @@
             </td>
           </tr>
         @endforeach
-        @foreach ($data as $index => $val)
-          <tr>
-            <td scope="col">{{ $index + 1 }}</td>
-            <td scope="col">{{ $val["full_name"] }}</td>
-            <td scope="col">{{ $val["email"] }}</td>
-            <td scope="col">{{ $departmentModel->where('id', $val["department_id"])->first()->th_name }}</td>
-            <td scope="col">{{ $val["position"] ?? "-" }}</td>
-            <td scope="col">{{ $roleModel->where("id", $val["role_id"])->first()->name }}</td>
-            <td scope="col">{{ $userModel->where("id", $val["head_id"])->first()->name ?? "-" }}</td>
-            <td scope="col">
-              @include("OKI.admin.manageUser.edit", ["roleModel" => $roleModel, "currentRole" => $val["role_id"], "id" => $val["id"]])
-              @include("OKI.confirm", ["id" => $val["id"], "name" => "ลบ", "modalId" => "remove-user-".$val["id"], "color" => "danger", "url" => route('manageUser.delete', ['id' => $val["id"]])])
-            </td>
-          </tr>
-        @endforeach
         </tbody>
         <nav class="float-right">
           <ul class="pagination">

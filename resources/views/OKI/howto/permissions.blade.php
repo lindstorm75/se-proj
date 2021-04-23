@@ -1,4 +1,4 @@
-<div class="card" id="permission">
+<div class="card" id="permissions">
   <div class="card-title px-4 pt-4 mb-0">
     <h2><i class="fas fa-user-cog"></i> สิทธิ์และสิ่งที่ทำได้</h2>
     <hr class="my-4">

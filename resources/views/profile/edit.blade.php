@@ -2,7 +2,7 @@
 
 @section('content')
     @include('users.partials.header', [
-        'title' => __('ยินดีต้อนรับ') . ' '. auth()->user()->full_name,
+        'title' => __('ยินดีต้อนรับ') . ' '.auth()->user()->full_name,
         'class' => 'col-lg-7'
     ])   
     <div class="container-fluid mt--7">
@@ -12,11 +12,6 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <h3 class="col-12 mb-0">{{ __('แก้ไขบัญชีผู้ใช้') }}</h3>
-                            <img
-                                class="rounded position-absolute right--6"
-                                src="https://pbs.twimg.com/profile_images/1129139436070035463/qFK0rqx5_400x400.png"
-                                alt="user's image"
-                                width="200">
                         </div>
                     </div>
                     <div class="card-body">
@@ -85,61 +80,75 @@
                                         </span>
                                     @endif
                                 </div>
-                 
-                                
-
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('บันทึก') }}</button>
                                 </div>
                             </div>
                         </form>
                         <hr class="my-4" />
-                        <!-- <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
-                            @csrf
-                            @method('put')
-
-                            <h4 class="text-muted mb-4">{{ __('รหัสผ่าน') }}</h4>
-
-                            @if (session('password_status'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {{ session('password_status') }}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            @endif
-
-                            <div class="pl-lg-4">
-                                <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-current-password">{{ __('รหัสผ่านปัจจุบัน') }}</label>
-                                    <input type="password" name="old_password" id="input-current-password" class="form-control form-control-alternative{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="{{ __('Current Password') }}" value="" required>
-                                    
-                                    @if ($errors->has('old_password'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('old_password') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-password">{{ __('New Password') }}</label>
-                                    <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('New Password') }}" value="" required>
-                                    
-                                    @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-control-label" for="input-password-confirmation">{{ __('Confirm New Password') }}</label>
-                                    <input type="password" name="password_confirmation" id="input-password-confirmation" class="form-control form-control-alternative" placeholder="{{ __('Confirm New Password') }}" value="" required>
-                                </div>
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">{{ __('Change password') }}</button>
-                                </div>
-                            </div>
-                        </form> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 order-xl-1">
+                <div class="card">
+                    <img
+                        class="rounded mx-auto my-4"
+                        src="{{ auth()->user()->image ?? 'https://th.jobsdb.com/th-th/cms/employer/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png' }}"
+                        alt="user's image"
+                        width="125">
+                    <div class="card-body">
+                        @if ($roleName == "subordinate")
+                            <span style="font-size: 1rem" class="badge badge-pill badge-warning float-right">ลูกน้อง</span>
+                        @elseif ($roleName == "user")
+                            <span style="font-size: 1rem" class="badge badge-pill badge-success float-right">ผู้ใช้ทั่วไป</span>
+                        @elseif ($roleName == "head")
+                            <span style="font-size: 1rem" class="badge badge-pill badge-info float-right">หัวหน้างาน</span>
+                        @elseif ($roleName == "dean")
+                            <span style="font-size: 1rem" class="badge badge-pill badge-primary float-right">คณะบดี</span>
+                        @elseif ($roleName == "admin")
+                            <span style="font-size: 1rem" class="badge badge-pill badge-danger float-right">ผู้ดูแลระบบ</span>
+                        @endif
+                        <h2 class="card-title">{{ auth()->user()->full_name }}</h2>
+                        <ul class="list-group">
+                            <li class="list-group-item pb-0">
+                                <p>
+                                <i class="fas fa-envelope"></i>
+                                อีเมล
+                                <ul>
+                                    <li>
+                                    <label>{{ auth()->user()->email }}</label>
+                                    </li>
+                                </ul>
+                                </p>
+                            </li>
+                            <li class="list-group-item pb-0">
+                                <p>
+                                <i class="fas fa-building"></i>
+                                สาขาวิชา
+                                <ul>
+                                    <li>
+                                    @foreach ($departments as $dep)
+                                        @if ($dep->id == auth()->user()->department_id)
+                                            <label>{{ $dep->th_name }}</label>
+                                            @break
+                                        @endif
+                                    @endforeach
+                                    </li>
+                                </ul>
+                                </p>
+                            </li>
+                            <li class="list-group-item pb-0">
+                                <p>
+                                <i class="fas fa-user-tag"></i>
+                                ตำแหน่ง
+                                <ul>
+                                    <li>
+                                        <label>{{ $dep->position ?? "-  " }}</label>
+                                    </li>
+                                </ul>
+                                </p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

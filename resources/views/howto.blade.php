@@ -33,7 +33,7 @@
     </div>
     <ul class="nav nav-pills nav-fill flex-column flex-sm-row mb-4" id="tabs-text" role="tablist">
       <li class="nav-item">
-        <a class="nav-link howto mb-sm-3 mb-md-0 active" id="tabs-text-1-tab" href="#sigin" aria-controls="tabs-text-1" aria-selected="true">การลงชื่อเข้าใช้</a>
+        <a class="nav-link howto mb-sm-3 mb-md-0 active" id="tabs-text-1-tab" href="#signin" aria-controls="tabs-text-1" aria-selected="true">การลงชื่อเข้าใช้</a>
       </li>
       <li class="nav-item">
         <a class="nav-link howto mb-sm-3 mb-md-0" id="tabs-text-2-tab" href="#accounts" aria-controls="tabs-text-2" aria-selected="false">บัญชีผู้ใช้งานที่มีในระบบ</a>

@@ -6,6 +6,7 @@ use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Department;
+use App\Role;
 
 class ProfileController extends Controller
 {
@@ -17,7 +18,8 @@ class ProfileController extends Controller
     public function edit()
     {
         $departments = Department::all();
-        return view('profile.edit', ["departments" => $departments]);
+        $roleName = Role::where("id", auth()->user()->role_id)->first()->name;
+        return view('profile.edit', ["departments" => $departments, "roleName" => $roleName]);
     }
 
     /**
@@ -28,7 +30,6 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-        dd($request);
         $request->validate([
             "name" => "required|string",
             "department_id" => "required|string",
