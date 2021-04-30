@@ -20,7 +20,7 @@
                                 {{ Session::get("message") }}
                             </div>
                         @endif
-                        <form method="POST" action="{{ route('updateProfile') }}" autocomplete="off">
+                        <form method="post" action="https://se-proj.en.kku.ac.th/g6/profile" autocomplete="off">
                             @csrf
                             <h4 class="text-muted mb-4">{{ __('ข้อมูลผู้ใช้') }}</h4>
                             <div class="pl-lg-4">
